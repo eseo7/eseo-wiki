@@ -1,0 +1,13 @@
+{
+  "version": "3.0.0",
+  "release": "v3",
+  "name": "eseo Wiki",
+  "updatedAt": "2026-05-23",
+  "changelog": [
+    {
+      "version": "3.0.0",
+      "date": "2026-05-23",
+      "notes": "GitHub 버전 관리 도입, 메인 화면 버전 표시"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { getDatabase, ref, onValue, set, update, remove } from 'https://www.gsta
 
 const CATEGORIES=['전체','회원 / 리워즈','포인트 / 쿠폰 / 바우처','결제 / PG / Eximbay','주문 / 커머스 / e-Shop','POS / PMS / Opera','API / 배치 / 연동','기타 / 하드코딩','장애 로그','회의록 / 아젠다','FAQ / 용어사전'];
 const PAGE_SIZE=20;
-const state={user:null,docs:[],selected:null,category:'전체',query:'',page:1,unsubscribe:null,bundledDocs:[],bundledMap:{}};
+const state={user:null,docs:[],selected:null,category:'전체',query:'',page:1,unsubscribe:null,bundledDocs:[],bundledMap:{},appVersion:null};
 const $=id=>document.getElementById(id);
 const appEl=$('app'), toastEl=$('toast'), listView=$('listView'), detailView=$('detailView'), formView=$('formView');
 const firebaseApp=initializeApp(firebaseConfig), auth=getAuth(firebaseApp), db=getDatabase(firebaseApp);
@@ -24,6 +24,30 @@ async function loadManifest(){
     state.bundledDocs=Array.isArray(m.docs)?m.docs:[];
     state.bundledMap=Object.fromEntries(state.bundledDocs.map(d=>[d.id,d]));
   }catch(e){console.warn('manifest load failed',e)}
+}
+async function loadVersion(){
+  try{
+    const r=await fetch('version.json',{cache:'no-store'});
+    if(!r.ok) return;
+    state.appVersion=await r.json();
+    renderVersionInfo();
+  }catch(e){console.warn('version load failed',e)}
+}
+function versionLabel(v=state.appVersion){
+  if(!v?.version) return '—';
+  return v.release?`${v.release} (${v.version})`:v.version;
+}
+function renderVersionInfo(){
+  const v=state.appVersion;
+  const label=versionLabel(v);
+  const hero=$('heroVersion'), side=$('sidebarVersion'), stat=$('statVersion');
+  if(hero) hero.textContent=label;
+  if(side) side.textContent=label;
+  if(stat) stat.textContent=v?.version||'—';
+  if(hero&&v?.updatedAt) hero.title=`배포일 ${v.updatedAt}`;
+  if(side&&v?.updatedAt) side.title=`배포일 ${v.updatedAt}`;
+  if(stat&&v?.updatedAt) stat.title=`배포일 ${v.updatedAt}`;
+  document.title=`eseo Wiki ${v?.version||''} | Parnas AI Operations Wiki`.replace(/\s+/g,' ').trim();
 }
 function enrichDoc(d){
   const b=state.bundledMap[d.id];
@@ -66,7 +90,7 @@ function infer(t=''){t=t.toLowerCase();if(/하드코딩|hardcoding/.test(t))retu
 function openForm(type='standard',doc=null){show('form');const htmlMode=type==='html';formView.innerHTML=`<div class="panel-head"><div><span class="badge">${htmlMode?'HTML IMPORT':'CREATE'}</span><h3>${doc?'문서 수정':'새 문서 등록'}</h3></div><button class="btn small" id="closeFormBtn">닫기</button></div><div class="tabs"><button class="tab ${type==='standard'?'active':''}" data-form-type="standard">일반 문서</button><button class="tab ${type==='markdown'?'active':''}" data-form-type="markdown">Markdown</button><button class="tab ${type==='html'?'active':''}" data-form-type="html">HTML</button></div><form id="docForm" class="form-grid" data-edit-id="${esc(doc?.id||'')}" data-content-type="${htmlMode?'html':'text'}"><div class="field"><label>문서 유형</label><select name="type"><option>운영매뉴얼</option><option ${doc?.type==='HTML 매뉴얼'?'selected':''}>HTML 매뉴얼</option><option>장애사례</option><option>FAQ</option></select></div><div class="field"><label>카테고리</label><select name="category">${CATEGORIES.filter(c=>c!=='전체').map(c=>`<option ${doc?.category===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div><div class="field full"><label>제목</label><input name="title" value="${esc(doc?.title||'')}" required></div><div class="field full"><label>핵심 요약</label><textarea name="summary">${esc(doc?.summary||'')}</textarea></div><div class="field"><label>원본 파일명/링크</label><input name="sourceFile" value="${esc(doc?.sourceFile||'')}"></div><div class="field"><label>대표 이미지 URL</label><input name="imageUrl" value="${esc(doc?.imageUrl||'')}"></div><div class="field full"><label>${htmlMode?'HTML 원문 붙여넣기':'상세 내용'}</label><textarea class="big" name="body">${esc(htmlMode?(doc?.htmlContent||''):(doc?.body||''))}</textarea></div><div class="actions full"><button class="btn dark" type="button" id="autoSplitBtn">필드 자동분리</button><button class="btn primary" type="submit">저장</button><button class="btn" type="button" id="cancelFormBtn">취소</button></div></form>`}
 function autoSplit(){const f=$('docForm'),raw=f.body.value||'';if(f.dataset.contentType==='html'){const p=new DOMParser().parseFromString(raw,'text/html');f.title.value=p.querySelector('title,h1,h2')?.textContent?.trim()||f.title.value||'HTML 문서';f.summary.value=p.querySelector('p')?.textContent?.trim()?.slice(0,180)||f.summary.value;f.type.value='HTML 매뉴얼';f.category.value=infer(p.body?.textContent||raw)}else{const lines=raw.split(/\n/).map(x=>x.trim()).filter(Boolean);if(!f.title.value&&lines[0])f.title.value=lines[0].replace(/^#+\s*/,'').slice(0,90);if(!f.summary.value&&lines[1])f.summary.value=lines[1].slice(0,180);f.category.value=infer(raw)}}
 async function saveForm(e){e.preventDefault();const f=e.target,data=Object.fromEntries(new FormData(f).entries()),id=f.dataset.editId||newId(data.title),prev=state.docs.find(d=>d.id===id),now=new Date().toISOString(),isHtml=f.dataset.contentType==='html';const p=isHtml?new DOMParser().parseFromString(data.body||'','text/html'):null;const text=isHtml?(p.body?.textContent||data.body||''):(data.body||'');const doc={...(prev||{}),id,type:data.type,category:data.category,title:data.title,summary:data.summary,sourceFile:data.sourceFile,imageUrl:data.imageUrl,contentType:isHtml?'html':'text',updatedAt:now,createdAt:prev?.createdAt||now,searchText:text.slice(0,20000)};if(isHtml){doc.htmlContent=data.body;delete doc.body;delete doc.contentPath}else{doc.body=data.body;delete doc.htmlContent;delete doc.contentPath}await set(ref(db,`wikiDocs/${id}`),doc);toast('저장 완료');state.selected=doc;openDoc(id)}
-async function seed(){try{if(!state.bundledDocs.length)await loadManifest();if(!state.bundledDocs.length)throw new Error('manifest.json을 찾지 못했습니다.');const u={};for(const d of state.bundledDocs)u[`wikiDocs/${d.id}`]=d;u['wikiMeta/seedVersion']='official-release-v2';await update(ref(db),u);toast(`${state.bundledDocs.length}개 HTML 문서를 갱신했어`)}catch(e){toast(e.message)}}
+async function seed(){try{if(!state.bundledDocs.length)await loadManifest();if(!state.bundledDocs.length)throw new Error('manifest.json을 찾지 못했습니다.');if(!state.appVersion)await loadVersion();const u={};for(const d of state.bundledDocs)u[`wikiDocs/${d.id}`]=d;u['wikiMeta/seedVersion']=state.appVersion?.version||'unknown';u['wikiMeta/appVersion']=state.appVersion||null;await update(ref(db),u);toast(`${state.bundledDocs.length}개 HTML 문서를 갱신했어`)}catch(e){toast(e.message)}}
 async function del(){if(!state.selected||!confirm('삭제할까요?'))return;await remove(ref(db,`wikiDocs/${state.selected.id}`));state.selected=null;toast('삭제 완료');renderList()}
 async function download(){const d=state.selected;if(!d)return;const content=d.contentType==='html'?await getHtml(d):(d.body||'');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:'text/html;charset=utf-8'}));a.download=(d.title||'wiki-doc').replace(/[\\/:*?"<>|]/g,'_')+'.html';a.click();URL.revokeObjectURL(a.href)}
 function backup(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state.docs,null,2)],{type:'application/json'}));a.download='eseo-wiki-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href)}
@@ -74,4 +98,4 @@ function subscribe(){if(state.unsubscribe)state.unsubscribe();state.unsubscribe=
 $('loginForm').addEventListener('submit',async e=>{e.preventDefault();try{await signInWithEmailAndPassword(auth,$('loginEmail').value.trim(),$('loginPassword').value)}catch(err){toast('로그인 실패: '+err.message)}});
 $('logoutBtn').onclick=()=>signOut(auth);$('newDocBtn').onclick=()=>openForm('standard');$('markdownImportBtn').onclick=()=>openForm('markdown');$('htmlImportBtn').onclick=()=>openForm('html');$('seedBtn').onclick=seed;$('backupBtn').onclick=backup;$('searchInput').oninput=e=>{state.query=e.target.value;state.page=1;renderList()};$('categoryList').onclick=e=>{const b=e.target.closest('[data-category]');if(b){state.category=b.dataset.category;state.page=1;renderList()}};$('docList').onclick=e=>{const b=e.target.closest('[data-doc-id]');if(b)openDoc(b.dataset.docId)};$('pager').onclick=e=>{const b=e.target.closest('[data-page]');if(b){state.page=+b.dataset.page;renderList()}};document.addEventListener('click',e=>{if(['backToListBtn','cancelFormBtn','closeFormBtn'].includes(e.target.id))renderList();if(e.target.id==='editDocBtn')openForm(state.selected?.contentType==='html'?'html':'standard',state.selected);if(e.target.id==='deleteDocBtn')del();if(e.target.id==='downloadHtmlBtn')download();if(e.target.id==='autoSplitBtn')autoSplit();const t=e.target.closest('[data-form-type]');if(t)openForm(t.dataset.formType)});document.addEventListener('submit',e=>{if(e.target.id==='docForm')saveForm(e)});$('topBtn').onclick=()=>scrollTo({top:0,behavior:'smooth'});addEventListener('scroll',()=>$('topBtn').classList.toggle('show',scrollY>340),{passive:true});
 onAuthStateChanged(auth,u=>{state.user=u;appEl.classList.toggle('auth-locked',!u);$('authLoggedOut').classList.toggle('hidden',!!u);$('authLoggedIn').classList.toggle('hidden',!u);document.querySelectorAll('[data-auth-only]').forEach(el=>el.classList.toggle('hidden',!u));if(u){$('userEmail').textContent=u.email||'';$('connectionText').textContent='Firebase Auth 연결됨 / DB 동기화중';subscribe()}else{$('connectionText').textContent='로그아웃됨';state.docs=[];if(state.unsubscribe)state.unsubscribe()}});
-await loadManifest();renderCats();
+await loadManifest();await loadVersion();renderCats();
