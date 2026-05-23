@@ -1,0 +1,1162 @@
+<div class="wiki-doc-embed" data-source="parnas_membership_manual_v2.html">
+<style>
+
+    :host {
+      --bg: #f7f4ef;
+      --paper: #fffdf9;
+      --paper-2: #ffffff;
+      --ink: #231f20;
+      --muted: #6f675f;
+      --line: #e5dacf;
+      --gold: #b08a57;
+      --gold-2: #d8c19a;
+      --brown: #5b4633;
+      --green: #2f7562;
+      --blue: #345b7d;
+      --red: #b35a50;
+      --shadow: 0 18px 50px rgba(91,70,51,.11);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    .wiki-doc-embed{ scroll-behavior: smooth; }
+    .wiki-doc-embed{
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 0%, rgba(216,193,154,.35), transparent 32%),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 45%, #f3eee6 100%);
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 286px minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .side {
+      position: sticky;
+      top: 24px;
+      height: calc(100vh - 48px);
+      background: rgba(255,253,249,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .brand {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .brand .eyebrow {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #efe3d1;
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .brand h1 {
+      font-size: 21px;
+      line-height: 1.28;
+      margin: 14px 0 8px;
+      letter-spacing: -.04em;
+    }
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 7px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      color: #4f463e;
+      font-size: 14px;
+      font-weight: 750;
+      border: 1px solid transparent;
+      transition: .15s ease;
+    }
+    .nav a::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: .55;
+      flex: 0 0 auto;
+    }
+    .nav a:hover {
+      background: #f3eadf;
+      border-color: #ead9c6;
+      transform: translateX(2px);
+    }
+
+    .side-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .main {
+      min-width: 0;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(65,49,35,.93), rgba(118,87,52,.92)),
+        radial-gradient(circle at 80% 20%, rgba(216,193,154,.4), transparent 35%);
+      color: #fff;
+      padding: 42px;
+      box-shadow: 0 24px 70px rgba(65,49,35,.2);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 54px solid rgba(216,193,154,.12);
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero .meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+    }
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.055em;
+    }
+    .hero p {
+      max-width: 900px;
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.83);
+      font-size: 17px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 11px 15px;
+      font-family: var(--font);
+      font-weight: 850;
+      cursor: pointer;
+      color: #2d231b;
+      background: #fff5e6;
+      box-shadow: 0 8px 25px rgba(0,0,0,.12);
+    }
+    .btn.secondary {
+      color: #fff;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: none;
+    }
+
+    .grid-4 {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metric {
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 17px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric span { color: rgba(255,255,255,.78); font-size: 13px; }
+
+    section {
+      margin-top: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-head h3 {
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: -.04em;
+      line-height: 1.25;
+    }
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tag {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f1e5d7;
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--paper-2);
+      border: 1px solid #eaded2;
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .card h4 {
+      margin: 0 0 9px;
+      font-size: 17px;
+      letter-spacing: -.025em;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card ul, .card ol { margin: 10px 0 0; padding-left: 20px; color: #4f4740; }
+    .card li { margin: 4px 0; }
+    .card .label {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f5eee6;
+      color: var(--brown);
+      font-weight: 850;
+      font-size: 12px;
+    }
+
+    .summary-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .notice {
+      border-left: 5px solid var(--gold);
+      background: #fff8ee;
+      border-radius: 16px;
+      padding: 17px 18px;
+      color: #4d4034;
+    }
+    .notice strong { display: block; margin-bottom: 6px; }
+
+    .flow-line {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 11px;
+      align-items: stretch;
+    }
+    .flow-step {
+      position: relative;
+      border: 1px solid #e4d4c3;
+      background: #fffdfa;
+      border-radius: 17px;
+      padding: 15px;
+      min-height: 116px;
+    }
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 20px;
+      z-index: 2;
+    }
+    .flow-step b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .flow-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .mini-code {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 4px 7px;
+      border-radius: 8px;
+      background: #f2ede7;
+      color: #43372e;
+      font-family: var(--mono);
+      font-size: 12px;
+      word-break: break-all;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid #e5d8ca;
+      border-radius: 16px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid #eee4d9;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      background: #f4eadf;
+      color: #4d3a2a;
+      font-size: 13px;
+      letter-spacing: -.01em;
+    }
+    tr:last-child td { border-bottom: 0; }
+    code {
+      font-family: var(--mono);
+      background: #f4efe9;
+      padding: 2px 6px;
+      border-radius: 7px;
+      font-size: .92em;
+      color: #3e332b;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .status.green { background: #e8f3ef; color: var(--green); }
+    .status.blue { background: #e7eef5; color: var(--blue); }
+    .status.gold { background: #f6ecda; color: #8a642c; }
+    .status.red { background: #f7e7e5; color: var(--red); }
+
+    .api-list {
+      display: grid;
+      gap: 14px;
+    }
+    .api-card {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid #eaded2;
+      border-radius: 18px;
+      background: #fff;
+    }
+    .api-card h4 { margin: 0 0 8px; font-size: 18px; }
+    .endpoint {
+      display: block;
+      padding: 10px 11px;
+      border-radius: 12px;
+      background: #2d2723;
+      color: #fff7ef;
+      font-family: var(--mono);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+    .api-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .api-meta span {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #f5eee6;
+      color: #5e4c3a;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px;
+      background: #fffaf3;
+      border: 1px solid #f0e3d4;
+      border-radius: 13px;
+      font-size: 14px;
+    }
+    .steps li::before {
+      content: counter(step);
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #efe0ce;
+      color: #5f4630;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+    }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .checkitem {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 15px;
+      border: 1px solid #eaded2;
+      background: #fffdfa;
+    }
+    .checkitem::before {
+      content: "✓";
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e9f2ed;
+      color: var(--green);
+      font-weight: 950;
+    }
+    .checkitem b { display: block; margin-bottom: 2px; }
+    .checkitem span { color: var(--muted); font-size: 13px; }
+
+    .raw {
+      white-space: pre-wrap;
+      background: #28231f;
+      color: #fff8f0;
+      border-radius: 18px;
+      padding: 20px;
+      overflow: auto;
+      max-height: 520px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(35,31,32,.92);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 850;
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: .18s ease;
+      z-index: 20;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .print-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    @media (max-width: 1180px) {
+      .shell { grid-template-columns: 1fr; }
+      .side { position: relative; top: auto; height: auto; }
+      .nav { grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow-line { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -20px; transform: translateX(50%); }
+      .api-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .shell { padding: 14px; }
+      .hero { padding: 28px 22px; border-radius: 24px; }
+      section { padding: 20px; }
+      .cards, .summary-box, .split, .checklist, .grid-4 { grid-template-columns: 1fr; }
+      .nav { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .tag { display: inline-flex; margin-top: 10px; }
+      th, td { padding: 11px; }
+    }
+
+    @media print {
+      .wiki-doc-embed{ background: #fff; }
+      .shell { display: block; max-width: none; padding: 0; }
+      .side, .hero-actions, .toast { display: none !important; }
+      .hero, section { box-shadow: none; break-inside: avoid; }
+      section { page-break-inside: avoid; }
+      .raw { max-height: none; color: #000; background: #f3f3f3; }
+    }
+  
+</style>
+<style>
+
+:host{display:block; contain:content;}
+.wiki-doc-embed{font-family:var(--font, -apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR",sans-serif); color:#0f172a; line-height:1.6; width:100%; max-width:100%; overflow-x:hidden; background:#fff;}
+.wiki-doc-embed *{box-sizing:border-box;}
+.wiki-doc-embed img,.wiki-doc-embed video{max-width:100%;height:auto;}
+.wiki-doc-embed .page-section,.wiki-doc-embed .tab-panel{display:block!important;opacity:1!important;transform:none!important;visibility:visible!important;}
+.wiki-doc-embed .layout,.wiki-doc-embed .page,.wiki-doc-embed main{max-width:100%!important;margin-left:0!important;margin-right:0!important;}
+.wiki-doc-embed table{max-width:100%;}
+.wiki-doc-embed .table-wrap{overflow-x:auto;}
+.wiki-doc-embed pre{white-space:pre-wrap;overflow-x:auto;}
+.wiki-doc-embed code{white-space:normal;word-break:normal;overflow-wrap:break-word;}
+.wiki-doc-embed .top-nav,.wiki-doc-embed .site-header,.wiki-doc-embed .topbar,.wiki-doc-embed nav[aria-label="상단 메뉴"]{display:none!important;}
+
+</style>
+<main class="main">
+<header class="hero">
+<div class="hero-inner">
+<div class="meta">
+<span class="pill">회원가입</span>
+<span class="pill">통합회원</span>
+<span class="pill">CDP / CRS / CMS 동기화</span>
+<span class="pill">운영매뉴얼 포함용</span>
+</div>
+<h2>회원 가입부터 통합 전환까지<br/>한 번에 보는 운영 프로세스</h2>
+<p>
+            이 문서는 개발 원문에 있는 API, 상태값, DB 반영 순서를 운영자가 이해하기 쉬운 형태로 재구성한 매뉴얼입니다.
+            핵심은 <b>회원의 출발점이 Web인지, Rewards인지, 신규 통합회원인지</b>에 따라 <b>userType</b>과 <b>integration_type</b>이 달라지고,
+            이후 CDP·CRS·CMS 동기화 범위가 결정된다는 점입니다.
+          </p>
+
+<div class="grid-4">
+<div class="metric"><strong>4개</strong><span>주요 API: join / login / register / update</span></div>
+<div class="metric"><strong>3개</strong><span>핵심 시스템: Integration / CDP / Membership</span></div>
+<div class="metric"><strong>2개</strong><span>외부 동기화: CRS / CMS</span></div>
+<div class="metric"><strong>3종</strong><span>주요 회원 유형: Web / Rewards / Unified</span></div>
+</div>
+</div>
+</header>
+<section id="overview">
+<div class="section-head">
+<div>
+<h3>1. 핵심 요약</h3>
+<p>비개발자 관점에서 먼저 봐야 할 결론입니다.</p>
+</div>
+<span class="tag">Executive Summary</span>
+</div>
+<div class="summary-box">
+<div class="notice">
+<strong>운영 핵심</strong>
+            신규 가입은 바로 통합회원 형태로 생성됩니다. 일반 가입과 카카오 가입 모두 최종적으로 <code>userType="U"</code>, <code>integration_type="N"</code> 상태가 됩니다.
+          </div>
+<div class="notice">
+<strong>전환 핵심</strong>
+            기존 Web 회원은 로그인 시 CDP 존재 여부에 따라 통합 가능 상태가 판단됩니다. CDP가 있으면 <code>integration_type="U"</code>, 없으면 <code>integration_type="T"</code>로 분기됩니다.
+          </div>
+<div class="notice">
+<strong>병합 핵심</strong>
+            Web + Rewards 통합 등록 시 Web 계정은 Unified 계정으로 전환되고, 최종 로그인 ID/PW와 개인정보는 Rewards 기준으로 갱신됩니다.
+          </div>
+<div class="notice">
+<strong>동기화 핵심</strong>
+            회원 생성·수정 시 CDP, Membership, Integration 테이블을 반영하고, 조건에 따라 CRS와 CMS까지 동기화합니다.
+          </div>
+</div>
+</section>
+<section id="terms">
+<div class="section-head">
+<div>
+<h3>2. 용어·상태값 정리</h3>
+<p>로그 분석, API 응답 확인, 장애 원인 파악 시 가장 먼저 확인해야 하는 값입니다.</p>
+</div>
+<span class="tag">Glossary</span>
+</div>
+<div class="split">
+<div class="card">
+<h4>시스템 용어</h4>
+<table>
+<thead><tr><th>용어</th><th>의미</th><th>운영 관점</th></tr></thead>
+<tbody>
+<tr><td><code>CRS</code></td><td>Central Reservation System</td><td>예약/고객 정보 연계 대상 시스템</td></tr>
+<tr><td><code>CMS</code></td><td>Customer Management System</td><td><code>cmsProfileId</code>가 있을 때 회원 정보 동기화 대상</td></tr>
+<tr><td><code>CDP</code></td><td>Customer Data Platform</td><td>회원의 고객 원장성 데이터를 보유하는 영역</td></tr>
+<tr><td><code>Integration</code></td><td>통합 로그인/회원 매핑 테이블</td><td>로그인 ID, 회원 유형, 통합 상태를 판단하는 기준</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h4>상태값 빠른 해석</h4>
+<table>
+<thead><tr><th>필드</th><th>값</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td><code>userType</code></td><td><span class="status blue">W</span></td><td>기존 Web 회원</td></tr>
+<tr><td><code>userType</code></td><td><span class="status green">U</span></td><td>통합 회원 / Unified 회원</td></tr>
+<tr><td><code>userType</code></td><td><span class="status gold">R</span></td><td>Rewards 회원</td></tr>
+<tr><td><code>integration_type</code></td><td><span class="status green">N</span></td><td>일반 정상 상태. 추가 통합 조치 없음</td></tr>
+<tr><td><code>integration_type</code></td><td><span class="status blue">U</span></td><td>통합 가능 상태. Web과 Rewards 병합 대상</td></tr>
+<tr><td><code>integration_type</code></td><td><span class="status red">T</span></td><td>전환 가능 상태. CDP 미존재 등으로 별도 전환 처리 필요</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="state-flow">
+<div class="section-head">
+<div>
+<h3>3. 회원 상태 흐름</h3>
+<p>회원이 어느 경로로 가입/로그인했는지에 따라 최종 상태가 달라집니다.</p>
+</div>
+<span class="tag">State Flow</span>
+</div>
+<div class="flow-line">
+<div class="flow-step">
+<b>신규 Web 가입</b>
+<span>초기 Web 회원 상태</span>
+<code class="mini-code">W / N</code>
+</div>
+<div class="flow-step">
+<b>로그인 &amp; CDP 발견</b>
+<span>통합 가능 여부 판단</span>
+<code class="mini-code">W / U</code>
+</div>
+<div class="flow-step">
+<b>Rewards와 통합 등록</b>
+<span>Web + Rewards 병합</span>
+<code class="mini-code">register</code>
+</div>
+<div class="flow-step">
+<b>통합 회원</b>
+<span>Unified 계정으로 전환 완료</span>
+<code class="mini-code">U / N</code>
+</div>
+<div class="flow-step">
+<b>정보 수정</b>
+<span>CDP·Membership·CRS·CMS 동기화</span>
+<code class="mini-code">update</code>
+</div>
+</div>
+<div class="cards" style="margin-top:14px;">
+<div class="card"><span class="label">신규 일반/카카오</span><h4>가입 즉시 통합회원</h4><p>신규 가입은 일반/카카오 모두 최종적으로 <code>userType="U"</code>, <code>integration_type="N"</code>으로 생성됩니다.</p></div>
+<div class="card"><span class="label">Rewards 첫 로그인</span><h4>Rewards 기준 진입</h4><p>Rewards 첫 로그인 시 <code>userType="R"</code>로 진입할 수 있으며, 상황에 따라 <code>integration_type="N"</code> 또는 <code>"U"</code>가 됩니다.</p></div>
+<div class="card"><span class="label">기존 Web 회원</span><h4>로그인 시 전환 판단</h4><p>기존 Web 회원은 로그인 과정에서 CDP 존재 여부를 확인한 뒤 통합 가능/전환 가능 상태로 갱신됩니다.</p></div>
+</div>
+</section>
+<section id="api-map">
+<div class="section-head">
+<div>
+<h3>4. API 흐름 요약</h3>
+<p>어떤 상황에서 어떤 API가 호출되는지 한눈에 보는 표입니다.</p>
+</div>
+<span class="tag">API Map</span>
+</div>
+<table>
+<thead>
+<tr><th>업무 상황</th><th>API</th><th>Controller / Service</th><th>응답/결과</th><th>운영 확인 포인트</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 회원 가입</td>
+<td><code>/v1/membership/integration/join</code></td>
+<td><code>IntegrationController</code><br/><code>createNewMemberForId()</code></td>
+<td><code>IwsSignUpResponse</code></td>
+<td>CDP, Membership, Integration, CRS 생성 동기화 여부</td>
+</tr>
+<tr>
+<td>카카오 회원 가입</td>
+<td><code>/v1/membership/integration/join</code></td>
+<td>신규 가입 Flow 동일</td>
+<td><code>IwsSignUpResponse</code></td>
+<td><code>channelId</code> 중복, <code>loginId=membershipNo</code> 여부</td>
+</tr>
+<tr>
+<td>Web 회원 로그인/전환</td>
+<td><code>/v1/membership/integration/login</code></td>
+<td><code>commonLogin()</code></td>
+<td><code>IwsLoginResponse</code> + <code>integration_type</code></td>
+<td>비밀번호 암호화 방식, 잠금, 블랙리스트, CDP 존재 여부</td>
+</tr>
+<tr>
+<td>간편/카카오 로그인</td>
+<td><code>/v1/membership/integration/login</code></td>
+<td>간편 로그인 분기</td>
+<td>회원 정보 반환</td>
+<td><code>channelId</code>, <code>memberCi</code>, Rewards 조회 결과</td>
+</tr>
+<tr>
+<td>통합 회원 등록</td>
+<td><code>/v1/membership/integration/register</code></td>
+<td><code>setIntegrationMember()</code></td>
+<td><code>IwsSignUpResponse</code></td>
+<td><code>W/U → U/N</code> 전환, Rewards 정보 기준 갱신</td>
+</tr>
+<tr>
+<td>회원 정보 수정</td>
+<td><code>/v1/membership/integration/update</code></td>
+<td><code>updateUserInfo()</code></td>
+<td><code>Success</code></td>
+<td>CDP, Membership, CRS, CMS, 약관 정보 동기화 여부</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="join">
+<div class="section-head">
+<div>
+<h3>5. 신규 회원 가입</h3>
+<p>일반 신규 회원 가입 시 내부 테이블 생성과 CRS 동기화까지 진행됩니다.</p>
+</div>
+<span class="tag">/integration/join</span>
+</div>
+<div class="api-card">
+<div>
+<h4>신규 회원 가입 API</h4>
+<span class="endpoint">POST /v1/membership/integration/join</span>
+<div class="api-meta"><span>Controller: IntegrationController</span><span>Service: createNewMemberForId()</span><span>응답: IwsSignUpResponse</span></div>
+</div>
+<ol class="steps">
+<li>사용자 요청 수신 후 유효성 검사와 중복 체크를 수행합니다.</li>
+<li>CDP 고객 기본 레코드를 생성합니다. <code>cdp.tb_cdp_customer_info</code></li>
+<li>CDP 커스텀 정보를 생성합니다. <code>cdp.tb_cdp_user_custom_info</code></li>
+<li>멤버십 회원 기본 정보를 생성합니다. <code>membership.tb_membership_user_info</code></li>
+<li>멤버십 발급, 등급, 쿠폰, 약관 정보를 순서대로 생성합니다.</li>
+<li>Integration 회원을 생성합니다. <code>userType="U"</code>, <code>integration_type="N"</code></li>
+<li>CRS 생성 동기화를 호출합니다. <code>syncCreateInfoToCRS()</code></li>
+</ol>
+</div>
+</section>
+<section id="kakao">
+<div class="section-head">
+<div>
+<h3>6. 신규 회원 가입: 카카오</h3>
+<p>기본 Flow는 일반 신규 가입과 동일하지만, 로그인 ID와 중복 체크 기준이 다릅니다.</p>
+</div>
+<span class="tag">Kakao Join</span>
+</div>
+<div class="cards">
+<div class="card"><span class="label">동일한 부분</span><h4>가입 API와 생성 순서 동일</h4><p>카카오 가입도 <code>/integration/join</code>을 사용하며 CDP, Membership, Integration 생성 및 CRS 동기화 흐름은 일반 가입과 같습니다.</p></div>
+<div class="card"><span class="label">다른 부분 1</span><h4>loginId 처리</h4><p>카카오 가입 시 <code>loginId</code>는 사용자가 입력한 ID가 아니라 <code>membershipNo</code>, 즉 멤버십 번호를 사용합니다.</p></div>
+<div class="card"><span class="label">다른 부분 2</span><h4>channelId 중복 체크</h4><p>카카오 ID인 <code>channelId</code> 기준 중복 체크가 추가됩니다. 카카오 연동 이슈 분석 시 반드시 확인해야 합니다.</p></div>
+</div>
+</section>
+<section id="login">
+<div class="section-head">
+<div>
+<h3>7. Web 회원 로그인: 통합회원 전환 판단</h3>
+<p>기존 Web 회원이 로그인하면 통합 가능 여부가 판정되고, 그 결과가 <code>integration_type</code>으로 내려갑니다.</p>
+</div>
+<span class="tag">/integration/login</span>
+</div>
+<div class="api-card">
+<div>
+<h4>Web 회원 로그인 API</h4>
+<span class="endpoint">POST /v1/membership/integration/login</span>
+<div class="api-meta"><span>Service: commonLogin()</span><span>응답: IwsLoginResponse</span></div>
+</div>
+<ol class="steps">
+<li>Integration 테이블에서 <code>loginId</code>로 회원을 검색합니다.</li>
+<li>Integration 회원이 없으면 Rewards 회원 여부를 확인하고 필요한 경우 Integration 레코드를 생성합니다.</li>
+<li>비밀번호를 검증합니다. Web 회원은 <code>SHA256</code>, Unified/Rewards 회원은 <code>BCrypt</code>를 사용합니다.</li>
+<li>계정 잠금 상태와 블랙리스트 여부를 확인합니다.</li>
+<li>Web 회원은 CDP 존재 여부를 확인합니다. CDP가 있으면 <code>integration_type="U"</code>, 없으면 <code>integration_type="T"</code>로 판단합니다.</li>
+<li>Integration 레코드와 마지막 로그인 시간을 갱신합니다.</li>
+</ol>
+</div>
+</section>
+<section id="simple-login">
+<div class="section-head">
+<div>
+<h3>8. 간편 로그인 / 카카오 로그인</h3>
+<p>CI와 채널 정보를 기준으로 Integration 또는 Rewards 회원을 찾고 로그인 상태를 반환합니다.</p>
+</div>
+<span class="tag">Simple Login</span>
+</div>
+<div class="api-card">
+<div>
+<h4>간편 로그인 요청값</h4>
+<span class="endpoint">channelId, memberCi, memberName, memberPhone</span>
+<div class="api-meta"><span>API: /integration/login</span><span>대상: 카카오/간편 로그인</span></div>
+</div>
+<ol class="steps">
+<li><code>loginCi</code>로 Integration 회원을 먼저 조회합니다.</li>
+<li>Integration 회원이 없으면 Rewards에서 <code>simpleId + memberCi</code>로 조회합니다.</li>
+<li>Rewards 회원이 발견되면 Integration 레코드를 생성합니다.</li>
+<li>잠금 상태와 블랙리스트를 체크합니다.</li>
+<li>Web 회원이 존재하면 <code>integration_type</code>을 업데이트합니다.</li>
+<li>최종 회원 정보를 반환합니다.</li>
+</ol>
+</div>
+</section>
+<section id="register">
+<div class="section-head">
+<div>
+<h3>9. 통합 회원 등록: Web + Rewards 병합</h3>
+<p>기존 Web 회원을 Rewards 회원과 연결해 통합회원으로 전환하는 핵심 프로세스입니다.</p>
+</div>
+<span class="tag">/integration/register</span>
+</div>
+<div class="api-card">
+<div>
+<h4>통합 등록 API</h4>
+<span class="endpoint">POST /v1/membership/integration/register</span>
+<div class="api-meta"><span>Service: setIntegrationMember()</span><span>전환: W/U → U/N</span><span>응답: IwsSignUpResponse</span></div>
+</div>
+<ol class="steps">
+<li><code>webMemberId</code>로 기존 Web 회원을 조회합니다.</li>
+<li>대상 회원의 <code>integration_type == "U"</code> 여부를 검증합니다.</li>
+<li><code>rewardsMembershipId</code>로 Rewards 회원을 조회합니다.</li>
+<li>Rewards 비밀번호 정보를 통합 ID/PW 기준으로 업데이트합니다. PW는 <code>BCrypt</code>로 인코딩합니다.</li>
+<li>Integration 레코드를 갱신합니다. <code>userType: "W" → "U"</code>, <code>integration_type: "U" → "N"</code></li>
+<li>개인정보, <code>systemKey</code>, <code>membershipNo</code>는 Rewards 데이터를 기준으로 반영합니다.</li>
+<li>약관 정보를 동기화하고 <code>IwsSignUpResponse</code>를 반환합니다.</li>
+</ol>
+</div>
+</section>
+<section id="update">
+<div class="section-head">
+<div>
+<h3>10. 회원 정보 수정: 다중 시스템 동기화</h3>
+<p>회원 정보 수정은 Integration만 바꾸는 것이 아니라 CDP, Membership, CRS, CMS까지 영향 범위를 확인해야 합니다.</p>
+</div>
+<span class="tag">/integration/update</span>
+</div>
+<div class="api-card">
+<div>
+<h4>회원 정보 수정 API</h4>
+<span class="endpoint">POST /v1/membership/integration/update</span>
+<div class="api-meta"><span>Service: updateUserInfo()</span><span>응답: Success</span></div>
+</div>
+<ol class="steps">
+<li>Integration 회원을 조회합니다.</li>
+<li>Integration 테이블의 회원 정보를 업데이트합니다.</li>
+<li><code>systemKey</code>가 있으면 Rewards 계정 보유자로 보고 CDP와 Membership 정보를 업데이트합니다.</li>
+<li>Rewards 계정 보유자는 CRS 수정 동기화를 호출합니다. <code>syncUpdateInfoToCRS()</code></li>
+<li><code>cmsProfileId</code>가 있으면 CMS 동기화를 호출합니다. <code>syncUserInfoToCmsReq()</code></li>
+<li>약관 정보를 업데이트합니다. <code>membership.tb_membership_user_term_info</code></li>
+</ol>
+</div>
+</section>
+<section id="tables">
+<div class="section-head">
+<div>
+<h3>11. 연동 테이블·시스템 영향 범위</h3>
+<p>장애 분석이나 데이터 정합성 확인 시 어떤 테이블을 봐야 하는지 정리했습니다.</p>
+</div>
+<span class="tag">Data Scope</span>
+</div>
+<table>
+<thead><tr><th>구분</th><th>테이블/함수</th><th>생성/수정 시점</th><th>확인 포인트</th></tr></thead>
+<tbody>
+<tr><td>CDP 기본정보</td><td><code>cdp.tb_cdp_customer_info</code></td><td>신규 가입 / 회원 수정</td><td>고객 기본 정보 생성·수정 여부</td></tr>
+<tr><td>CDP 커스텀정보</td><td><code>cdp.tb_cdp_user_custom_info</code></td><td>신규 가입 / 회원 수정</td><td>추가 속성 정보 반영 여부</td></tr>
+<tr><td>멤버십 회원</td><td><code>membership.tb_membership_user_info</code></td><td>신규 가입 / 회원 수정</td><td>멤버십 기준 개인정보 정합성</td></tr>
+<tr><td>멤버십 발급</td><td><code>membership.tb_membership_user_issued_info</code></td><td>신규 가입</td><td>회원번호/발급 정보 생성 여부</td></tr>
+<tr><td>등급 정보</td><td><code>membership.tb_membership_user_grade_info</code></td><td>신규 가입</td><td>기본 등급 부여 여부</td></tr>
+<tr><td>쿠폰 정보</td><td><code>membership.tb_coupon_issued_info</code></td><td>신규 가입</td><td>가입 쿠폰 발행 여부</td></tr>
+<tr><td>약관 정보</td><td><code>membership.tb_membership_user_term_info</code></td><td>신규 가입 / 통합 등록 / 회원 수정</td><td>필수/선택 약관 동의 이력</td></tr>
+<tr><td>통합 회원</td><td><code>integration.tb_integration_user_info</code></td><td>신규 가입 / 로그인 / 통합 등록 / 수정</td><td><code>userType</code>, <code>integration_type</code>, <code>loginId</code>, <code>systemKey</code></td></tr>
+<tr><td>CRS 동기화</td><td><code>syncCreateInfoToCRS()</code>, <code>syncUpdateInfoToCRS()</code></td><td>신규 가입 / 회원 수정</td><td>CRS 고객 정보 생성·수정 성공 여부</td></tr>
+<tr><td>CMS 동기화</td><td><code>syncUserInfoToCmsReq()</code></td><td><code>cmsProfileId</code> 존재 시 회원 수정</td><td>CMS 프로필 정보 반영 여부</td></tr>
+</tbody>
+</table>
+</section>
+<section id="operation">
+<div class="section-head">
+<div>
+<h3>12. 운영자 확인 포인트</h3>
+<p>문의나 오류가 들어왔을 때 운영/기획자가 먼저 확인하면 좋은 항목입니다.</p>
+</div>
+<span class="tag">Operation Guide</span>
+</div>
+<div class="checklist">
+<div class="checkitem"><div><b>가입 채널 확인</b><span>일반 가입인지, 카카오 가입인지, 기존 Web 회원 로그인인지 먼저 구분합니다.</span></div></div>
+<div class="checkitem"><div><b>회원 유형 확인</b><span><code>userType</code>이 W, U, R 중 무엇인지 확인합니다.</span></div></div>
+<div class="checkitem"><div><b>통합 상태 확인</b><span><code>integration_type</code>이 N, U, T 중 무엇인지 확인합니다.</span></div></div>
+<div class="checkitem"><div><b>CDP 존재 여부 확인</b><span>기존 Web 회원은 CDP 존재 여부에 따라 통합 가능/전환 가능 상태가 달라집니다.</span></div></div>
+<div class="checkitem"><div><b>카카오 중복 확인</b><span>카카오 가입/로그인 이슈는 <code>channelId</code>와 <code>memberCi</code>를 같이 확인합니다.</span></div></div>
+<div class="checkitem"><div><b>비밀번호 방식 확인</b><span>Web은 SHA256, Unified/Rewards는 BCrypt이므로 전환 구간에서 검증 방식이 다를 수 있습니다.</span></div></div>
+<div class="checkitem"><div><b>CRS 동기화 확인</b><span>신규 가입/회원 수정 후 CRS 연동 성공 여부를 확인합니다.</span></div></div>
+<div class="checkitem"><div><b>CMS 동기화 확인</b><span><code>cmsProfileId</code>가 있는 회원은 CMS 동기화까지 확인합니다.</span></div></div>
+</div>
+</section>
+<section id="qa">
+<div class="section-head">
+<div>
+<h3>13. QA 체크리스트</h3>
+<p>개발 반영 후 테스트 시나리오로 바로 사용할 수 있는 항목입니다.</p>
+</div>
+<span class="tag">QA Scenario</span>
+</div>
+<table>
+<thead><tr><th>시나리오</th><th>테스트 조건</th><th>기대 결과</th><th>확인 데이터</th></tr></thead>
+<tbody>
+<tr><td>일반 신규 가입</td><td>신규 ID/PW로 가입</td><td><code>userType=U</code>, <code>integration_type=N</code>, CRS 생성 동기화</td><td>CDP, Membership, Integration, CRS</td></tr>
+<tr><td>카카오 신규 가입</td><td>신규 <code>channelId</code>로 가입</td><td><code>loginId=membershipNo</code>, <code>channelId</code> 중복 없음</td><td>Integration, Membership</td></tr>
+<tr><td>카카오 중복 가입</td><td>기존 <code>channelId</code>로 재가입 시도</td><td>중복 가입 차단 또는 기존 회원 연결 처리</td><td>API 응답, Integration</td></tr>
+<tr><td>기존 Web 회원 로그인</td><td>Web ID/PW 정상 입력</td><td>CDP 존재 시 <code>integration_type=U</code> 반환</td><td>Integration, CDP</td></tr>
+<tr><td>CDP 없는 Web 회원 로그인</td><td>CDP 미존재 회원 로그인</td><td><code>integration_type=T</code> 반환</td><td>Integration, CDP 조회 결과</td></tr>
+<tr><td>통합 회원 등록</td><td><code>integration_type=U</code>인 Web 회원 + Rewards 회원</td><td><code>userType=U</code>, <code>integration_type=N</code>, Rewards 기준 정보 갱신</td><td>Integration, Membership, 약관</td></tr>
+<tr><td>회원 정보 수정</td><td>이름/연락처/약관 등 변경</td><td>Integration, CDP, Membership, CRS, CMS 조건부 반영</td><td>각 테이블 및 동기화 로그</td></tr>
+<tr><td>계정 잠금/블랙리스트</td><td>잠금 또는 블랙리스트 회원 로그인</td><td>정상 로그인 차단 및 사유 응답</td><td>로그인 API 응답, 상태 플래그</td></tr>
+</tbody>
+</table>
+</section>
+<section id="raw">
+<div class="section-head">
+<div>
+<h3>14. 원문 기술 메모</h3>
+<p>개발자 확인용으로 원문 내용을 그대로 보관했습니다.</p>
+</div>
+<span class="tag">Original Memo</span>
+</div>
+<pre class="raw">
+CRS (Central Reservation System)
+CMS (Customer Management System)
+	- cmsProfileId
+
+신규 Web 가입 → userType="W", integration_type="N"
+    ↓ (로그인 &amp; CDP 발견)
+Web 회원 → userType="W", integration_type="U"
+    ↓ (Rewards와 통합 등록)
+통합 회원 → userType="U", integration_type="N"
+
+신규 가입 (일반/카카오) → userType="U", integration_type="N"
+
+Rewards 첫 로그인 → userType="R", integration_type="N" or "U"
+
+신규 회원
+	/v1/membership/integration/join
+======================================================================================
+사용자 요청
+    ↓
+[IntegrationController] /integration/join
+    ↓
+[IntegrationService] createNewMemberForId()
+    ↓
+1. 유효성 검사 &amp; 중복 체크
+    ↓
+2. CDP 레코드 생성 [cdp.tb_cdp_customer_info]
+    ↓
+3. CDP 커스텀 정보 생성 [cdp.tb_cdp_user_custom_info]
+    ↓
+4. 멤버십 회원 생성 [membership.tb_membership_user_info]
+    ↓
+5. 멤버십 발급 정보 생성 [membership.tb_membership_user_issued_info]
+    ↓
+6. 등급 정보 생성 [membership.tb_membership_user_grade_info]
+    ↓
+7. 쿠폰 정보 생성 [membership.tb_coupon_issued_info]
+    ↓
+8. 약관 정보 생성 [membership.tb_membership_user_term_info]
+    ↓
+9. Integration 회원 생성 [integration.tb_integration_user_info]
+   - userType: "U"
+   - integration_type: "N"
+   - loginId: 사용자가 제공한 ID
+   - systemKey: membershipUserInfoId
+    ↓
+10. 🌐 CRS 동기화 → syncCreateInfoToCRS()
+    ↓
+[응답] IwsSignUpResponse
+======================================================================================
+
+신규 회원 가입 (카카오)
+	/v1/membership/integration/join
+======================================================================================
+Flow 1과 동일하지만:
+- loginId = membershipNo (멤버십 번호를 로그인 ID로 사용)
+- channelId (카카오 ID) 중복 체크 추가
+======================================================================================
+
+Web 회원 로그인 (통합회원으로 전환)
+	/v1/membership/integration/login
+======================================================================================
+사용자 요청 (Web 회원 ID + 비밀번호)
+    ↓
+[IntegrationController] /integration/login
+    ↓
+[IntegrationService] commonLogin()
+    ↓
+1. Integration 테이블에서 loginId로 검색
+    ↓
+2. 없으면 → Rewards 회원 체크 → Integration 레코드 생성
+    ↓
+3. 비밀번호 검증
+   - Web 회원: SHA256
+   - Unified/Rewards: BCrypt
+    ↓
+4. 계정 잠금 상태 체크
+    ↓
+5. 블랙리스트 체크
+    ↓
+6. Web 회원의 경우 → CDP 존재 여부 확인
+   - CDP 있음 → integration_type = "U" (통합 가능)
+   - CDP 없음 → integration_type = "T" (전환 가능)
+    ↓
+7. Integration 레코드 업데이트
+    ↓
+8. 마지막 로그인 시간 갱신
+    ↓
+[응답] IwsLoginResponse with integration_type
+======================================================================================
+
+간편 로그인 / 카카오 로그인
+	/v1/membership/integration/login
+======================================================================================
+사용자 요청 (channelId, memberCi, memberName, memberPhone)
+    ↓
+1. loginCi로 Integration 회원 조회
+    ↓
+2. 없으면 → Rewards에서 simpleId + memberCi로 조회
+    ↓
+3. Rewards 발견 → Integration 레코드 생성
+    ↓
+4. 잠금/블랙리스트 상태 체크
+    ↓
+5. Web 회원 존재시 integration_type 업데이트
+    ↓
+6. 회원 정보 반환
+======================================================================================
+
+통합 회원 등록 (Web + Rewards 병합)
+	/v1/membership/integration/register
+======================================================================================
+사용자 요청
+    ↓
+[IntegrationController] /integration/register
+    ↓
+[IntegrationService] setIntegrationMember()
+    ↓
+1. webMemberId로 Web 회원 조회
+    ↓
+2. integration_type == "U" 검증
+    ↓
+3. rewardsMembershipId로 Rewards 회원 조회
+    ↓
+4. Rewards 비밀번호 업데이트
+   - membershipId → unifiedId
+   - membershipPw → unifiedPw (BCrypt 인코딩)
+    ↓
+5. Integration 레코드 업데이트:
+   - userType: "W" → "U"
+   - integration_type: "U" → "N"
+   - loginId: unifiedId
+   - loginPw: unifiedPw (BCrypt 인코딩)
+   - systemKey: Rewards membershipUserInfoId
+   - membershipNo: Rewards에서 가져옴
+   - 모든 개인정보를 Rewards 데이터로 갱신
+   - joinDate: 현재 시각 (통합 시점)
+    ↓
+6. 약관 동기화
+    ↓
+[응답] IwsSignUpResponse
+======================================================================================
+
+회원 정보 수정 (다중 시스템 동기화)
+	/v1/membership/integration/update
+======================================================================================
+사용자 요청
+    ↓
+[IntegrationController] /integration/update
+    ↓
+[IntegrationService] updateUserInfo()
+    ↓
+1. Integration 회원 조회
+    ↓
+2. Integration 테이블 업데이트
+    ↓
+3. systemKey 존재시 (Rewards 계정 보유):
+   a. CDP 정보 조회
+   b. CDP 업데이트 [cdp.tb_cdp_customer_info]
+   c. CDP 커스텀 정보 업데이트 [cdp.tb_cdp_user_custom_info]
+   d. 멤버십 회원 정보 업데이트 [membership.tb_membership_user_info]
+   e. 🌐 CRS 동기화 → syncUpdateInfoToCRS()
+    ↓
+4. cmsProfileId 존재시:
+   → 🌐 CMS 동기화 → syncUserInfoToCmsReq()
+    ↓
+5. 약관 정보 업데이트 [membership.tb_membership_user_term_info]
+    ↓
+[응답] Success
+======================================================================================
+
+</pre>
+</section>
+<div class="print-note">문서 기준: 회원가입프로세스.md · 파르나스 운영매뉴얼 포함용 HTML</div>
+</main>
+</div>

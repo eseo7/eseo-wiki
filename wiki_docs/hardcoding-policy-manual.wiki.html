@@ -1,0 +1,1508 @@
+<div class="wiki-doc-embed" data-source="hardcoding_policy_manual.html">
+<style>
+
+:host {
+  --navy:#081b3f; --navy2:#102b5d; --blue:#2457d6; --teal:#0b8f8a; --purple:#6a4cff;
+  --bg:#f4f7fb; --card:#ffffff; --line:#dbe4f0; --text:#172033; --muted:#64748b; --danger:#e2533f; --warn:#f59e0b; --good:#0f9f6e;
+}
+*{box-sizing:border-box}
+.wiki-doc-embed{scroll-behavior:smooth}
+.wiki-doc-embed{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+.header{background:linear-gradient(135deg,var(--navy),#102b5d 60%,#0b8f8a);color:white;padding:42px 34px 30px;border-bottom:1px solid rgba(255,255,255,.18)}
+.header-inner{max-width:1560px;margin:0 auto}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:7px 12px;border-radius:999px}
+h1{font-size:42px;line-height:1.12;margin:18px 0 10px;letter-spacing:-.04em}
+.subtitle{font-size:18px;color:#dbeafe;max-width:980px;margin:0}
+.top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;background:#fff;color:var(--navy);box-shadow:0 8px 20px rgba(4,20,60,.18)}
+.btn.secondary{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.28)}
+.shell{max-width:1560px;margin:0 auto;padding:24px 28px 60px}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;align-items:start}
+.sidebar{position:sticky;top:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:0 12px 30px rgba(15,23,42,.08)}
+.nav-title{font-size:13px;font-weight:900;color:var(--muted);padding:8px 10px}
+.nav{display:grid;grid-template-columns:1fr;gap:8px}
+.nav a{display:block;padding:10px 12px;border-radius:12px;color:#26324a;font-weight:800;font-size:14px;border:1px solid transparent}
+.nav a:hover{background:#eef5ff;border-color:#d9e8ff;color:var(--blue)}
+.content{min-width:0}
+.section{background:var(--card);border:1px solid var(--line);border-radius:24px;margin-bottom:20px;box-shadow:0 16px 45px rgba(15,23,42,.07);overflow:hidden}
+.section-head{padding:26px 28px 8px}
+.section-head h2{font-size:26px;margin:0 0 7px;letter-spacing:-.03em;color:var(--navy)}
+.section-head p{margin:0;color:var(--muted)}
+.section-body{padding:18px 28px 30px}
+.grid{display:grid;gap:14px}
+.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.card h3{margin:0 0 8px;color:var(--navy);font-size:18px;letter-spacing:-.02em}
+.card p{margin:0;color:#41506b}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:900;padding:5px 9px;border-radius:999px;background:#eef5ff;color:var(--blue);margin-bottom:9px}
+.badge.warn{background:#fff6df;color:#996000}
+.badge.danger{background:#fff0ec;color:#be3a2c}
+.badge.good{background:#eafaf2;color:#087e53}
+.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.kpi .item{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:14px}
+.kpi .num{font-size:26px;font-weight:900}
+.kpi .label{color:#dbeafe;font-size:13px}
+.flow{display:grid;gap:12px}
+.flow-row{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:stretch}
+.step-title{background:linear-gradient(135deg,#eaf2ff,#f4fbff);border:1px solid #cfe2ff;border-radius:16px;padding:15px;font-weight:900;color:var(--navy)}
+.step-desc{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff}
+.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid #e8eef6;padding:10px 12px;vertical-align:top;text-align:left}
+th{background:#f2f6fc;color:var(--navy);font-weight:900;white-space:nowrap}
+tr:hover td{background:#fbfdff}
+.notice{border-left:5px solid var(--warn);background:#fff8e6;border-radius:16px;padding:17px 18px;color:#543b00}
+.dangerbox{border-left:5px solid var(--danger);background:#fff3f0;border-radius:16px;padding:17px 18px;color:#5f2018}
+.goodbox{border-left:5px solid var(--good);background:#ecfdf5;border-radius:16px;padding:17px 18px;color:#064e3b}
+.search-panel{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:12px;margin-bottom:16px}
+.search-panel input,.search-panel select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font-size:15px;background:white}
+.copy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.copy-card{display:grid;grid-template-columns:80px minmax(0,1fr) 74px;gap:10px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px}
+.copy-card code{font-family:"SFMono-Regular",Consolas,monospace;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#f8fafc;border:1px solid #edf2f7;border-radius:10px;padding:8px;color:#1f2937}
+.copy-card button,.code-block button{border:0;background:var(--navy);color:white;border-radius:10px;padding:8px 10px;font-weight:800;cursor:pointer}
+.copy-meta{font-size:12px;font-weight:900;color:var(--teal)}
+.code-block{position:relative;background:#0f172a;color:#e5e7eb;border-radius:18px;padding:16px;margin:12px 0;overflow:auto}
+.code-block button{position:absolute;top:10px;right:10px;background:#1d4ed8}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:"SFMono-Regular",Consolas,monospace;font-size:12.5px}
+.raw-md{font-size:15px}
+.raw-md h1,.raw-md h2,.raw-md h3{color:var(--navy);letter-spacing:-.03em}
+.raw-md code{background:#f1f5f9;border:1px solid #e2e8f0;padding:2px 5px;border-radius:6px;font-family:"SFMono-Regular",Consolas,monospace;font-size:.92em}
+.raw-md pre code{background:transparent;border:0;padding:0}
+.raw-md pre{background:#0f172a;color:#e5e7eb;border-radius:16px;padding:16px;overflow:auto}
+.mini-tag{display:inline-flex;margin:2px;padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#334155;font-size:12px;font-weight:800}
+.footer{text-align:center;color:var(--muted);padding:30px 0}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.cols-4,.grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}.copy-grid{grid-template-columns:1fr}}
+@media (max-width:720px){.header{padding:30px 18px}h1{font-size:30px}.shell{padding:16px}.grid.cols-2,.grid.cols-3,.grid.cols-4,.kpi{grid-template-columns:1fr}.flow-row{grid-template-columns:1fr}.nav{grid-template-columns:1fr}.search-panel{grid-template-columns:1fr}.copy-card{grid-template-columns:1fr}}
+@media print{.sidebar,.top-actions,.search-panel,.copy-card button,.code-block button{display:none!important}.layout{display:block}.section{break-inside:avoid;box-shadow:none}body{background:white}}
+
+</style>
+<style>
+
+:host{display:block; contain:content;}
+.wiki-doc-embed{font-family:var(--font, -apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR",sans-serif); color:#0f172a; line-height:1.6; width:100%; max-width:100%; overflow-x:hidden; background:#fff;}
+.wiki-doc-embed *{box-sizing:border-box;}
+.wiki-doc-embed img,.wiki-doc-embed video{max-width:100%;height:auto;}
+.wiki-doc-embed .page-section,.wiki-doc-embed .tab-panel{display:block!important;opacity:1!important;transform:none!important;visibility:visible!important;}
+.wiki-doc-embed .layout,.wiki-doc-embed .page,.wiki-doc-embed main{max-width:100%!important;margin-left:0!important;margin-right:0!important;}
+.wiki-doc-embed table{max-width:100%;}
+.wiki-doc-embed .table-wrap{overflow-x:auto;}
+.wiki-doc-embed pre{white-space:pre-wrap;overflow-x:auto;}
+.wiki-doc-embed code{white-space:normal;word-break:normal;overflow-wrap:break-word;}
+.wiki-doc-embed .top-nav,.wiki-doc-embed .site-header,.wiki-doc-embed .topbar,.wiki-doc-embed nav[aria-label="상단 메뉴"]{display:none!important;}
+
+</style>
+<main class="content">
+<section class="section" id="overview">
+<div class="section-head"><h2>1. 비개발자용 개요</h2><p>이 문서는 “관리자 화면에서 바꾸는 정책”이 아니라 “코드에 직접 입력되어 운영되는 정책”을 모아둔 자료입니다.</p></div>
+<div class="section-body">
+<div class="grid cols-3">
+<div class="card"><span class="badge danger">핵심</span><h3>왜 중요한가?</h3><p>호텔, 바우처, 결제, 이벤트 팝업이 코드에 있으면 간단한 운영 변경도 개발 수정과 배포가 필요합니다.</p></div>
+<div class="card"><span class="badge warn">PM 관점</span><h3>무엇을 확인해야 하나?</h3><p>변경 요청을 받을 때 “관리자 수정 가능/개발 수정 필요”를 먼저 구분해야 일정과 리스크를 정확히 잡을 수 있습니다.</p></div>
+<div class="card"><span class="badge good">운영 방향</span><h3>어디로 개선해야 하나?</h3><p>반복 변경되는 항목은 관리자화해서 운영자가 직접 수정하고, 코드는 정책 엔진만 담당하는 구조가 좋습니다.</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="analysis">
+<div class="section-head"><h2>2. 문서 전체 내용 분석 요약</h2><p>원문은 총 11개 영역의 하드코딩 정책과 변경 시 확인해야 할 파일을 정리하고 있습니다.</p></div>
+<div class="section-body">
+<div class="grid cols-3">
+<div class="card"><span class="badge">호텔 관련</span><h3>웨스틴 예외, 제주 결제문구/공사문구, 호텔 카테고리, 주소 매핑</h3><p>호텔 ID/예약 가능일/외부 이동 URL</p></div><div class="card"><span class="badge">쿠폰/바우처</span><h3>환경별 바우처 ID와 호텔·가격·태그·기간별 필터링</h3><p>매우 높음: 관리자화 1순위</p></div><div class="card"><span class="badge">결제</span><h3>간편결제/해외카드/국내카드/계좌이체 코드</h3><p>결제 모듈 영향</p></div><div class="card"><span class="badge">상품</span><h3>W회원 전용 바우처 패키지 상품 ID 제한</h3><p>상품 ID 변경 시 오류 가능</p></div><div class="card"><span class="badge">날짜/가격 제한</span><h3>나인트리 체크아웃 제한, 이벤트 투숙기간, 최소 결제금액</h3><p>만료일 관리 필요</p></div><div class="card"><span class="badge">메인페이지</span><h3>캐러셀, 숙박 프로모션, 다이닝, 브랜드, 컬렉션, 리워즈 섹션</h3><p>콘텐츠 운영성 낮음</p></div><div class="card"><span class="badge">호텔 소개</span><h3>Introduction, CEO, Heritage, Vision, Sustainability</h3><p>Vision은 다국어 미지원</p></div><div class="card"><span class="badge">멤버십</span><h3>더파르나스 혜택, 리워즈 혜택 이미지/키</h3><p>혜택 변경 시 코드 확인</p></div><div class="card"><span class="badge">마이프로필</span><h3>대시보드 상품, 등급 혜택, 인보이스 호텔 정보</h3><p>인보이스 정보 정확성 중요</p></div><div class="card"><span class="badge">이벤트 팝업</span><h3>홈/상품목록 팝업 조건, localStorage, 기간/호텔 조건</h3><p>운영 이벤트 리스크 높음</p></div>
+</div>
+<div class="notice" style="margin-top:16px"><strong>PM 해석:</strong> 이 문서는 단순 개발 참고자료가 아니라, “어떤 운영 정책이 관리자 없이 코드로 관리되고 있는지”를 보여주는 운영 리스크 목록입니다.</div>
+</div>
+</section>
+<section class="section" id="operator">
+<div class="section-head"><h2>3. 운영자 매뉴얼 버전</h2><p>현업 요청이 들어왔을 때, 아래 순서로 판단하면 됩니다.</p></div>
+<div class="section-body flow">
+<div class="flow-row"><div class="step-title">1. 요청 접수</div><div class="step-desc">현업 요청이 문구 변경인지, 노출 조건 변경인지, 특정 호텔/상품/바우처 정책 변경인지 구분합니다.</div></div><div class="flow-row"><div class="step-title">2. 하드코딩 여부 확인</div><div class="step-desc">관리자 메뉴에서 수정 가능한지 먼저 확인하고, 관리자 항목이 없으면 이 문서의 위치 파일을 기준으로 개발 수정 대상으로 분류합니다.</div></div><div class="flow-row"><div class="step-title">3. 변경 대상 정리</div><div class="step-desc">호텔 ID, 상품 ID, 바우처 ID, URL, 이미지 파일, 다국어 키, 적용 기간, 최소 금액을 표로 정리합니다.</div></div><div class="flow-row"><div class="step-title">4. 개발 요청</div><div class="step-desc">수정 파일 경로와 변경 전/후 정책을 함께 전달합니다. 바우처는 개발 ID/운영 ID를 반드시 분리합니다.</div></div><div class="flow-row"><div class="step-title">5. 검수</div><div class="step-desc">개발/스테이지에서 조건별 노출·비노출, 링크 이동, 다국어 문구, 모바일 화면을 확인합니다.</div></div><div class="flow-row"><div class="step-title">6. 운영 배포 후 확인</div><div class="step-desc">운영 환경에서 실제 호텔/상품/바우처 기준으로 최종 확인하고 변경 이력을 남깁니다.</div></div>
+</div>
+</section>
+<section class="section" id="map">
+<div class="section-head"><h2>4. 하드코딩 맵</h2><p>업무 영역별로 “어떤 정책이 코드에 박혀 있는지” 한눈에 보는 표입니다.</p></div>
+<div class="section-body">
+<div class="table-wrap"><table>
+<thead><tr><th>영역</th><th>대표 하드코딩 내용</th><th>PM 확인 포인트</th></tr></thead>
+<tbody><tr><td><strong>호텔 관련</strong></td><td>웨스틴 예외, 제주 결제문구/공사문구, 호텔 카테고리, 주소 매핑</td><td>호텔 ID/예약 가능일/외부 이동 URL</td></tr><tr><td><strong>쿠폰/바우처</strong></td><td>환경별 바우처 ID와 호텔·가격·태그·기간별 필터링</td><td>매우 높음: 관리자화 1순위</td></tr><tr><td><strong>결제</strong></td><td>간편결제/해외카드/국내카드/계좌이체 코드</td><td>결제 모듈 영향</td></tr><tr><td><strong>상품</strong></td><td>W회원 전용 바우처 패키지 상품 ID 제한</td><td>상품 ID 변경 시 오류 가능</td></tr><tr><td><strong>날짜/가격 제한</strong></td><td>나인트리 체크아웃 제한, 이벤트 투숙기간, 최소 결제금액</td><td>만료일 관리 필요</td></tr><tr><td><strong>메인페이지</strong></td><td>캐러셀, 숙박 프로모션, 다이닝, 브랜드, 컬렉션, 리워즈 섹션</td><td>콘텐츠 운영성 낮음</td></tr><tr><td><strong>호텔 소개</strong></td><td>Introduction, CEO, Heritage, Vision, Sustainability</td><td>Vision은 다국어 미지원</td></tr><tr><td><strong>멤버십</strong></td><td>더파르나스 혜택, 리워즈 혜택 이미지/키</td><td>혜택 변경 시 코드 확인</td></tr><tr><td><strong>마이프로필</strong></td><td>대시보드 상품, 등급 혜택, 인보이스 호텔 정보</td><td>인보이스 정보 정확성 중요</td></tr><tr><td><strong>이벤트 팝업</strong></td><td>홈/상품목록 팝업 조건, localStorage, 기간/호텔 조건</td><td>운영 이벤트 리스크 높음</td></tr></tbody>
+</table></div>
+</div>
+</section>
+<section class="section" id="voucher">
+<div class="section-head"><h2>5. 바우처/가격 정책 요약</h2><p>바우처는 환경별 ID, 호텔, 금액, 날짜, 임직원 태그 조건이 복합적으로 걸려 있어 관리자화 우선순위가 가장 높습니다.</p></div>
+<div class="section-body">
+<h3>환경별 바우처 ID</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>바우처 종류</th>
+<th>개발 ID</th>
+<th>운영 ID</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 바우처 (30만원 이상)</td>
+<td>288</td>
+<td>286</td>
+<td>-</td>
+</tr>
+<tr>
+<td>제주 5만원 바우처</td>
+<td>290</td>
+<td>289</td>
+<td>제주 호텔만 사용, 10만원 이상</td>
+</tr>
+<tr>
+<td>나인트리 30만원 바우처</td>
+<td>299</td>
+<td>292</td>
+<td>-</td>
+</tr>
+<tr>
+<td>나인트리 50만원 바우처</td>
+<td>308</td>
+<td>293</td>
+<td>-</td>
+</tr>
+<tr>
+<td>W회원 전용 바우처</td>
+<td>310</td>
+<td>295</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Parnas Rewards Members Exclusive 패키지 바우처</td>
+<td>311</td>
+<td>298</td>
+<td>결제 금액 50만원 이상, 임직원 상품 제외, 사용 가능 호텔만 노출</td>
+</tr>
+<tr>
+<td>신규 바우처 (10만원 이상)</td>
+<td>312</td>
+<td>299</td>
+<td>10만원 이상 구매 시 사용 가능</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 3만 바우처</td>
+<td>313</td>
+<td>300</td>
+<td>제주 호텔만 사용, 50만원 이상</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 5만 바우처</td>
+<td>314</td>
+<td>301</td>
+<td>제주 호텔만 사용, 50만원 이상</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 2만 바우처</td>
+<td>316</td>
+<td>303</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 40만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 3만 바우처</td>
+<td>317</td>
+<td>304</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 70만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 5만 바우처</td>
+<td>318</td>
+<td>305</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 100만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스 호텔 제주 객실 전용 3만 바우처</td>
+<td>319</td>
+<td>306</td>
+<td>개발: H2O호텔, 운영: 제주(26), 30만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 그랜드 인터컨티넨탈 서울 파르나스 객실 전용 2만 바우처</td>
+<td>320</td>
+<td>307</td>
+<td>개발: H2O호텔, 운영: 그랜드(21), 30만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 나인트리 바이 파르나스 객실 전용 1만 바우처</td>
+<td>321</td>
+<td>308</td>
+<td>개발: H2O호텔, 운영: 나인트리 5개 지점, 10만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스호텔 식음 전용 1만 바우처</td>
+<td>322</td>
+<td>309</td>
+<td>개발: H2O호텔, 운영: 그랜드/제주/웨스틴, 5만원 이상</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 style="margin-top:22px">최소 결제금액 기준</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>바우처 종류</th>
+<th>최소 금액</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 5만원 바우처</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>나인트리 30만원 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>나인트리 50만원 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>Parnas Rewards Members Exclusive 패키지 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규 바우처 (10만원 이상)</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 3만 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 5만 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 2만 바우처</td>
+<td>400,000원</td>
+<td>40만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 3만 바우처</td>
+<td>700,000원</td>
+<td>70만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 5만 바우처</td>
+<td>1,000,000원</td>
+<td>100만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스 호텔 제주 객실 전용 3만 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 그랜드 인터컨티넨탈 서울 파르나스 객실 전용 2만 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 나인트리 바이 파르나스 객실 전용 1만 바우처</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스호텔 식음 전용 1만 바우처</td>
+<td>50,000원</td>
+<td>5만원 미만 시 비노출</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="dangerbox" style="margin-top:16px"><strong>주의:</strong> 운영 ID와 개발 ID가 다르므로, 운영 검수 시 개발 ID 기준으로 확인하면 잘못된 바우처를 보게 됩니다.</div>
+</div>
+</section>
+<section class="section" id="admin">
+<div class="section-head"><h2>6. 관리자화 제안</h2><p>운영 변경이 잦은 하드코딩은 관리자 메뉴로 빼야 PM/운영자가 직접 통제할 수 있습니다.</p></div>
+<div class="section-body">
+<div class="grid cols-2">
+<div class="card"><span class="badge good">개선</span><h3>우선 관리자화 대상</h3><p>이벤트 팝업, 메인 프로모션, 바우처 필터링, 호텔 소개 콘텐츠, 외부 링크 URL, 공사/주의문구</p></div><div class="card"><span class="badge good">개선</span><h3>관리자 필드 예시</h3><p>노출여부, 시작일/종료일, 호텔 ID, 상품 ID, 최소 결제금액, 제외 태그, 이미지, 다국어 제목/내용, 링크 URL</p></div><div class="card"><span class="badge good">개선</span><h3>승인 구조</h3><p>운영자 작성 → PM 검토 → 개발 영향 확인 → 배포 또는 관리자 즉시 반영</p></div><div class="card"><span class="badge good">개선</span><h3>로그/이력</h3><p>누가 언제 어떤 정책을 변경했는지 변경 이력과 이전값을 남기는 구조 필요</p></div><div class="card"><span class="badge good">개선</span><h3>검수 자동화</h3><p>운영 반영 전 조건 미리보기, 호텔/상품/날짜/금액 입력 시 노출 여부 시뮬레이션 기능 권장</p></div>
+</div>
+<div class="goodbox" style="margin-top:16px"><strong>추천 메뉴명:</strong> PORTAL 운영정책 관리 &gt; 호텔/바우처/메인콘텐츠/이벤트팝업/외부링크 관리</div>
+</div>
+</section>
+<section class="section" id="pmcheck">
+<div class="section-head"><h2>7. PM/기획자 체크리스트</h2><p>개발자가 아닌 PM이 변경 요청 전후로 확인해야 할 항목만 따로 뽑았습니다.</p></div>
+<div class="section-body">
+<div class="grid cols-2">
+<div class="card"><span class="badge">CHECK</span><h3>변경 유형 확인</h3><p>호텔/바우처/가격/날짜/결제/메인 콘텐츠/팝업/다국어 중 어떤 정책 변경인지 먼저 분류했는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>운영 영향 범위 확인</h3><p>PC·모바일, 한국어·영어·중국어·일본어, 개발·운영 환경에 모두 영향이 있는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>관리자 수정 가능 여부 확인</h3><p>관리자 화면에서 바꿀 수 있는지, 코드 하드코딩 수정과 배포가 필요한지 확인했는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>정확한 식별자 확보</h3><p>호텔 ID, 상품 ID, 바우처 ID, diningId, 다국어 키, 이미지 파일명을 요청서에 명확히 적었는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>기간/가격 조건 검증</h3><p>이벤트 기간, 체크인/체크아웃 기준, 최소 결제금액, 임직원 태그 제외 조건을 검토했는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>환경별 값 검증</h3><p>개발 ID와 운영 ID가 다른 항목은 운영값 기준으로 검수했는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>배포 후 검수 시나리오 준비</h3><p>노출/비노출 조건, 링크 이동, 다국어 문구, 모바일 화면을 확인할 테스트 케이스가 있는가?</p></div><div class="card"><span class="badge">CHECK</span><h3>문서 업데이트</h3><p>정책 변경 후 이 하드코딩 목록과 운영 매뉴얼을 같이 업데이트할 담당자가 정해졌는가?</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="copycenter">
+<div class="section-head"><h2>8. 개발자 복사센터</h2><p>개발자에게 전달할 파일 경로, URL, API 경로, 환경 변수/키를 바로 복사할 수 있습니다.</p></div>
+<div class="section-body">
+<div class="search-panel"><input id="copySearch" placeholder="파일명, URL, 키워드 검색"/><select id="typeFilter"><option value="">전체 유형</option><option>URL</option><option>파일 경로</option><option>API/경로</option><option>코드/키</option></select></div>
+<div class="copy-grid" id="copyGrid"><div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>http://10.15.6.124/ko/lifestyle/shop</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/en/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/ja/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/ko/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/ko/lifestyle/shop</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://seoul.intercontinental.com/zh/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://thewestinseoulparnas.com</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://www.marriott.com/ko/hotels/selwg-the-westin-seoul-parnas/overview/</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://www.ninetreehotels.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="URL"><div class="copy-meta">URL</div><code>https://www.parnashoteljeju.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/common/parnas_logo.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/common/parnas_w_btext.png</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/hotel/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/main/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/member/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/membership/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/myProfile/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/images/rewardsPopup/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>public/svg/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/@shared/@constants/hotelId.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/@shared/@constants/parnasJejuPeriod.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/@shared/RoomSearchPanel/@components/SelectHotel.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/@shared/RoomSearchPanel/@constants/index.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@components/DiningExperienceForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@components/ParnasHotelCollectionForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@components/StayPromotionForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/DiningExperience.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/ParnasHotelBrands.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/ParnasHotelCollection.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/ParnasRewardsTheParnas.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/StayPromotion.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@constant/TopCarousel.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/@container/DiningExperienceContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/eventPopup/@containers/EventPopupContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/hotel/ceo/@constant/Ceo.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/hotel/heritage/@constant/Heritage.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/hotel/introduction/@constant/Introduction.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/hotel/sustainability/@constant/Sustainability.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/hotel/vision/@constant/Vision.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/membership/@constant/</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/membership/@constant/rewardsConfig.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/membership/@constant/theParnasMainBenefitsConfig.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/myProfile/dashboard/@constants/dashboard.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/myProfile/reservations/@constants/hotelInfo.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/page.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/productList/@constants/index.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/productList/@hooks/useWestinHotel.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/reservationPayment/@components/paymentSelector/PaymentMethodSelector.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/reservationPayment/@containers/ReservationPaymentContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="파일 경로"><div class="copy-meta">파일 경로</div><code>src/app/reservationPayment/@utils/voucherFilter.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/en/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/common/grand_white.svg</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/common/parnas_logo.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/common/parnas_w_btext.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/ceo/ceo-portrait.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/ceo/ceo-portrait5.jpg</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/heritage/2025.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/introduction/business_1.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/introduction/hotel.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/introduction/hotelSelect/hotelSelect_1.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/introduction/hotelSelect/logo/logo_1.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/hotel/sustainability/sustainability_main.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/invoice/hotel-logo/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningGrandExperienceLogo_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningGrandExperience_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningJejuExperienceLogo_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningJejuExperience_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningWestinExperienceLogo_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/diningExperience/diningWestinExperience_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/ninetree.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/ninetree_hover.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/ninetree_logo.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasJeju.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasJeju_hover.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasJeju_logo.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasSeoul.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasSeoul_hover.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/parnasSeoul_logo.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/westinSeoulParnas.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/westinSeoulParnas_hover.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelBrands/westinSeoulParnas_logo.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelCollection/parnasHotelCollection_1.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelCollection/parnasHotelCollection_2.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelCollection/parnasHotelCollection_3.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasHotelCollection/parnasHotelCollection_4.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasRewardsTheParnas/parnasRewards_1.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasRewardsTheParnas/parnasRewards_2.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasRewardsTheParnas/theParnas_1.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/parnasRewardsTheParnas/theParnas_2.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/stayPromotion/stayPromotion_01.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/stayPromotion/stayPromotion_02.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/stayPromotion/stayPromotion_03.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/stayPromotion/stayPromotion_04.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/stayPromotion/stayPromotion_05.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/main/topCarousel/topCarousel_1.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/member/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/member/club+w.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/membership/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/membership/grand_bg.jpg</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/membership/grand_slide_01.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/myProfile/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/myProfile/dashboard_1.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/rewardsPopup/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/images/rewardsPopup/club.png</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/ja/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/ko/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/ko/hotels/selwg-the-westin-seoul-parnas/overview/</code><button>복사</button></div>
+<div class="copy-card" data-type="API/경로"><div class="copy-meta">API/경로</div><code>/ko/lifestyle/shop</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>'https://seoul.intercontinental.com/en/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>'https://seoul.intercontinental.com/ja/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>'https://seoul.intercontinental.com/ko/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>'https://seoul.intercontinental.com/zh/ethics-hotline'</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>HOTEL_ID.PARNAS_HOTEL_JEJU</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>NEXT_PUBLIC_APP_ENV</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>P000-P302-P303-P304-P306-P307</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>P101-P102-P103-P104-P105-P001-P002-P003-P141-P142-P143-P14</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>P302</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>P303</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>P308-P307</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>PARNAS_JEJU_SPECIAL_PERIOD_END_DATE</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>PARNAS_JEJU_SPECIAL_PERIOD_START_DATE</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>http://10.15.6.124/ko/lifestyle/shop</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://seoul.intercontinental.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://seoul.intercontinental.com/ko/lifestyle/shop</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://thewestinseoulparnas.com</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://www.marriott.com/ko/hotels/selwg-the-westin-seoul-parnas/overview/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://www.ninetreehotels.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>https://www.parnashoteljeju.com/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>process.env.NEXT_PUBLIC_APP_ENV === 'development'</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/common/parnas_logo.webp</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/common/parnas_w_btext.png</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/hotel/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/main/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/member/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/membership/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/myProfile/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/images/rewardsPopup/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>public/svg/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/@shared/@constants/hotelId.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/@shared/@constants/parnasJejuPeriod.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/@shared/RoomSearchPanel/@components/SelectHotel.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/@shared/RoomSearchPanel/@constants/index.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@components/DiningExperienceForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@components/ParnasHotelCollectionForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@components/StayPromotionForm.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/DiningExperience.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/ParnasHotelBrands.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/ParnasHotelCollection.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/ParnasRewardsTheParnas.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/StayPromotion.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@constant/TopCarousel.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/@container/DiningExperienceContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/eventPopup/@containers/EventPopupContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/hotel/ceo/@constant/Ceo.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/hotel/heritage/@constant/Heritage.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/hotel/introduction/@constant/Introduction.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/hotel/sustainability/@constant/Sustainability.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/hotel/vision/@constant/Vision.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/membership/@constant/</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/membership/@constant/rewardsConfig.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/membership/@constant/theParnasMainBenefitsConfig.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/myProfile/dashboard/@constants/dashboard.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/myProfile/reservations/@constants/hotelInfo.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/page.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/productList/@constants/index.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/productList/@hooks/useWestinHotel.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/reservationPayment/@components/paymentSelector/PaymentMethodSelector.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/reservationPayment/@containers/ReservationPaymentContainer.tsx</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>src/app/reservationPayment/@utils/voucherFilter.ts</code><button>복사</button></div>
+<div class="copy-card" data-type="코드/키"><div class="copy-meta">코드/키</div><code>yarn language</code><button>복사</button></div></div>
+</div>
+</section>
+<section class="section" id="caution">
+<div class="section-head"><h2>9. 변경 시 주의사항</h2><p>하드코딩 정책 변경은 단순 텍스트 수정이 아니라 서비스 노출 조건을 바꾸는 작업입니다.</p></div>
+<div class="section-body">
+<div class="grid cols-2">
+<div class="card"><span class="badge danger">RISK</span><h3>운영 정책이 코드에 있음</h3><p>호텔, 바우처, 결제, 이벤트 팝업 같은 업무 정책이 관리자 화면이 아니라 코드 파일에 박혀 있어 변경 시 개발 배포가 필요합니다.</p></div><div class="card"><span class="badge danger">RISK</span><h3>운영/개발 ID가 다름</h3><p>바우처 ID가 개발·운영 환경별로 다르게 정의되어 있어, 요청서에서 환경을 명확히 구분해야 합니다.</p></div><div class="card"><span class="badge danger">RISK</span><h3>다국어 키와 이미지가 분리 관리됨</h3><p>화면 문구는 다국어 키, 이미지는 public 폴더, 링크는 상수 파일에 있어 한 번의 콘텐츠 변경도 여러 파일 점검이 필요합니다.</p></div><div class="card"><span class="badge danger">RISK</span><h3>이벤트/기간 정책은 만료 리스크 있음</h3><p>이벤트 팝업, 제주 공사기간, Season Exclusive 기간처럼 날짜가 지나면 화면 정책이 어긋날 수 있습니다.</p></div><div class="card"><span class="badge danger">RISK</span><h3>상품/호텔 코드 변경 영향 큼</h3><p>hotelCode, prodID, diningId, hotelId가 URL·필터·예약 이동에 직접 쓰이므로 오입력 시 잘못된 상품/호텔로 연결됩니다.</p></div><div class="card"><span class="badge danger">RISK</span><h3>관리자 부재로 운영 대응 속도 저하</h3><p>간단한 문구·링크·기간 수정도 개발자 확인, 코드 수정, 배포 절차가 필요해 운영 유연성이 낮습니다.</p></div>
+</div>
+</div>
+</section>
+<section class="section" id="terms">
+<div class="section-head"><h2>10. 용어 설명</h2><p>개발 문서에서 자주 나오는 용어를 PM 관점으로 풀었습니다.</p></div>
+<div class="section-body">
+<div class="table-wrap"><table>
+<thead><tr><th>용어</th><th>쉬운 설명</th><th>이 문서에서의 의미</th></tr></thead>
+<tbody>
+<tr><td>하드코딩</td><td>관리자에서 바꾸는 값이 아니라 코드 안에 직접 적힌 값</td><td>호텔 ID, 바우처 ID, URL, 이미지 경로, 날짜 조건 등</td></tr>
+<tr><td>상수 파일</td><td>바뀌지 않는 값들을 모아둔 코드 파일</td><td>메인 콘텐츠, 호텔 목록, 다이닝 정보 등이 저장됨</td></tr>
+<tr><td>다국어 키</td><td>화면 문구를 직접 쓰지 않고 번역표에서 찾는 이름</td><td>문구 변경 시 구글 스프레드시트와 language 생성 작업 필요</td></tr>
+<tr><td>hotelId / hotelCode</td><td>호텔을 구분하는 숫자 또는 코드</td><td>제주 26, 그랜드 21, 웨스틴 9999 등</td></tr>
+<tr><td>prodID</td><td>상품을 구분하는 ID</td><td>메인 프로모션 링크나 패키지 바우처 노출 조건에 사용</td></tr>
+<tr><td>EM / IE 태그</td><td>임직원 상품을 구분하는 태그</td><td>특정 바우처 비노출 조건으로 사용</td></tr>
+<tr><td>localStorage</td><td>브라우저에 저장되는 작은 값</td><td>팝업을 닫았는지, 오늘 하루 보지 않기 여부를 저장</td></tr>
+<tr><td>환경 변수</td><td>개발/운영 환경을 구분하는 설정값</td><td>NEXT_PUBLIC_APP_ENV로 개발/운영 바우처 ID나 URL 분기</td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+<section class="section" id="original">
+<div class="section-head"><h2>11. 원문 상세</h2><p>원본 Markdown 내용을 웹 문서 형태로 그대로 확인할 수 있습니다.</p></div>
+<div class="section-body raw-md"><h1>하드코딩 정책 정리 문서</h1>
+<hr/>
+<h2>목차</h2>
+<ol>
+<li><a href="#1-%ED%98%B8%ED%85%94-%EA%B4%80%EB%A0%A8-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">호텔 관련 하드코딩</a></li>
+<li><a href="#2-%EC%BF%A0%ED%8F%B0%EB%B0%94%EC%9A%B0%EC%B2%98-%ED%95%84%ED%84%B0%EB%A7%81-%EC%A0%95%EC%B1%85">쿠폰/바우처 필터링 정책</a></li>
+<li><a href="#3-%EA%B2%B0%EC%A0%9C-%EA%B4%80%EB%A0%A8-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">결제 관련 하드코딩</a></li>
+<li><a href="#4-%EC%83%81%ED%92%88-%EA%B4%80%EB%A0%A8-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">상품 관련 하드코딩</a></li>
+<li><a href="#5-%EB%82%A0%EC%A7%9C-%EC%A0%9C%ED%95%9C-%EC%A0%95%EC%B1%85">날짜 제한 정책</a></li>
+<li><a href="#6-%EA%B0%80%EA%B2%A9-%EC%A0%9C%ED%95%9C-%EC%A0%95%EC%B1%85">가격 제한 정책</a></li>
+<li><a href="#7-%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">메인페이지 하드코딩</a></li>
+<li><a href="#8-%ED%98%B8%ED%85%94-%EC%86%8C%EA%B0%9C-%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">호텔 소개 페이지 하드코딩</a></li>
+<li><a href="#9-%EB%A9%A4%EB%B2%84%EC%8B%AD-%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">멤버십 페이지 하드코딩</a></li>
+<li><a href="#10-%EB%A7%88%EC%9D%B4%ED%94%84%EB%A1%9C%ED%95%84-%ED%8E%98%EC%9D%B4%EC%A7%80-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">마이프로필 페이지 하드코딩</a></li>
+<li><a href="#11-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%ED%8C%9D%EC%97%85-%ED%95%98%EB%93%9C%EC%BD%94%EB%94%A9">이벤트 팝업 하드코딩</a></li>
+</ol>
+<hr/>
+<h2>1. 호텔 관련 하드코딩</h2>
+<h3>1.1 웨스틴 조선 서울 예외 처리</h3>
+<p><strong>위치</strong>: <code>src/app/productList/@hooks/useWestinHotel.ts</code>, <code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code></p>
+<p><strong>호텔 ID</strong>: <code>9999</code></p>
+<p><strong>특수 처리 사항</strong>:</p>
+<ol>
+<li><p><strong>날짜 선택 예외 처리</strong></p>
+<ul>
+<li>일반 호텔: API를 통해 예약 가능 날짜를 조회</li>
+<li>웨스틴 조선 서울: API 조회 없이 <strong>모든 날짜를 예약 가능</strong>으로 처리</li>
+<li>파일: <code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code> (63-65줄)</li>
+</ul>
+</li>
+<li><p><strong>자동 리다이렉트 처리</strong></p>
+<ul>
+<li>웨스틴 조선 서울 선택 시 3초 후 자동으로 마리오트 사이트로 리다이렉트</li>
+<li>10분 내 재방문 시 리다이렉트 스킵</li>
+<li>파일: <code>src/app/productList/@hooks/useWestinHotel.ts</code></li>
+</ul>
+</li>
+<li><p><strong>리다이렉트 URL</strong></p>
+<ul>
+<li>URL: <code>https://www.marriott.com/ko/hotels/selwg-the-westin-seoul-parnas/overview/</code></li>
+<li>파일: <code>src/app/productList/@constants/index.ts</code> (29줄)</li>
+</ul>
+</li>
+<li><p><strong>호텔 CI 이미지</strong></p>
+<ul>
+<li>웨스틴 조선 서울은 별도 CI 컴포넌트 사용</li>
+<li>파일: <code>src/@shared/RoomSearchPanel/@components/SelectHotel.tsx</code> (76줄)</li>
+</ul>
+</li>
+</ol>
+<h3>1.2 제주 호텔 특수 처리</h3>
+<p><strong>호텔 ID</strong>: <code>26</code> (파르나스 호텔 제주)</p>
+<p><strong>특수 처리 사항</strong>:</p>
+<ol>
+<li><p><strong>결제 정책 안내 텍스트</strong></p>
+<ul>
+<li>제주 호텔만 다른 결제 정책 안내 문구 표시</li>
+<li>파일: <code>src/app/reservationPayment/@components/paymentSelector/PaymentMethodSelector.tsx</code> (109줄)</li>
+</ul>
+</li>
+<li><p><strong>바우처 필터링</strong></p>
+<ul>
+<li>제주 호텔(hotelId: 26) 등 호텔·금액·태그별 바우처 필터링</li>
+<li>파일: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (VOUCHER_FILTER_CONFIGS). <code>ReservationPaymentContainer.tsx</code>에서 <code>filterCouponList</code> 호출.</li>
+</ul>
+</li>
+<li><p><strong>시설 예약 공사 기간 주의문구</strong></p>
+<ul>
+<li>공사 기간: 2026년 3월 9일 ~ 2026년 4월 19일</li>
+<li>제주 호텔 예약 시 체크인/체크아웃 날짜가 공사 기간과 겹치는 경우 주의문구 노출</li>
+<li>주의문구: "에스추어리(야외 수영장)는 공사로 인해 2026년 3월 9일부터 4월 19일까지 이용이 불가합니다." (다국어 키: <code>jejuConstructionNotice</code>)</li>
+<li>파일: <code>src/app/reservationPayment/@components/paymentSelector/PaymentMethodSelector.tsx</code> (43-56줄, 109-110줄)</li>
+</ul>
+</li>
+</ol>
+<h3>1.3 호텔 카테고리별 분류</h3>
+<p><strong>위치</strong>: <code>src/@shared/RoomSearchPanel/@constants/index.tsx</code></p>
+<p><strong>카테고리별 호텔 ID 리스트</strong>:</p>
+<ul>
+<li><p><strong>Luxury 카테고리</strong>: <code>[26, 9999, 21, 39]</code></p>
+<ul>
+<li>26: 파르나스 호텔 제주</li>
+<li>9999: 웨스틴 조선 서울</li>
+<li>21: 그랜드 인터컨티넨탈 서울 파르나스</li>
+<li>39: (추가 호텔)</li>
+</ul>
+</li>
+<li><p><strong>premiumBusiness 카테고리</strong>: <code>[35, 36, 37, 38, 33]</code></p>
+<ul>
+<li>35: 나인트리 바이 파르나스 서울 명동 I</li>
+<li>36: 나인트리 바이 파르나스 서울 명동 II</li>
+<li>37: 나인트리 바이 파르나스 서울 인사동</li>
+<li>38: 나인트리 바이 파르나스 서울 동대문</li>
+<li>33: 나인트리 바이 파르나스 서울 판교</li>
+</ul>
+</li>
+</ul>
+<h3>1.4 호텔 주소 매핑</h3>
+<p><strong>위치</strong>: <code>src/@shared/RoomSearchPanel/@constants/index.tsx</code> (14-23줄)</p>
+<p>각 호텔 ID에 대응하는 다국어 주소 키가 하드코딩되어 있습니다.</p>
+<hr/>
+<h2>2. 쿠폰/바우처 필터링 정책</h2>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (VOUCHER_FILTER_CONFIGS, filterCouponList). <code>ReservationPaymentContainer.tsx</code>에서 <code>filterCouponList</code> 호출 (556-571줄).</p>
+<h3>2.1 환경별 바우처 ID</h3>
+<p><strong>개발 환경 (development)</strong>과 <strong>운영 환경</strong>에서 다른 바우처 ID를 사용합니다.</p>
+<table>
+<thead>
+<tr>
+<th>바우처 종류</th>
+<th>개발 ID</th>
+<th>운영 ID</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 바우처 (30만원 이상)</td>
+<td>288</td>
+<td>286</td>
+<td>-</td>
+</tr>
+<tr>
+<td>제주 5만원 바우처</td>
+<td>290</td>
+<td>289</td>
+<td>제주 호텔만 사용, 10만원 이상</td>
+</tr>
+<tr>
+<td>나인트리 30만원 바우처</td>
+<td>299</td>
+<td>292</td>
+<td>-</td>
+</tr>
+<tr>
+<td>나인트리 50만원 바우처</td>
+<td>308</td>
+<td>293</td>
+<td>-</td>
+</tr>
+<tr>
+<td>W회원 전용 바우처</td>
+<td>310</td>
+<td>295</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Parnas Rewards Members Exclusive 패키지 바우처</td>
+<td>311</td>
+<td>298</td>
+<td>결제 금액 50만원 이상, 임직원 상품 제외, 사용 가능 호텔만 노출</td>
+</tr>
+<tr>
+<td>신규 바우처 (10만원 이상)</td>
+<td>312</td>
+<td>299</td>
+<td>10만원 이상 구매 시 사용 가능</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 3만 바우처</td>
+<td>313</td>
+<td>300</td>
+<td>제주 호텔만 사용, 50만원 이상</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 5만 바우처</td>
+<td>314</td>
+<td>301</td>
+<td>제주 호텔만 사용, 50만원 이상</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 2만 바우처</td>
+<td>316</td>
+<td>303</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 40만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 3만 바우처</td>
+<td>317</td>
+<td>304</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 70만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 5만 바우처</td>
+<td>318</td>
+<td>305</td>
+<td>개발: H2O호텔, 운영: 파르나스 호텔 제주, 100만원 이상, 투숙기간 제한</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스 호텔 제주 객실 전용 3만 바우처</td>
+<td>319</td>
+<td>306</td>
+<td>개발: H2O호텔, 운영: 제주(26), 30만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 그랜드 인터컨티넨탈 서울 파르나스 객실 전용 2만 바우처</td>
+<td>320</td>
+<td>307</td>
+<td>개발: H2O호텔, 운영: 그랜드(21), 30만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 나인트리 바이 파르나스 객실 전용 1만 바우처</td>
+<td>321</td>
+<td>308</td>
+<td>개발: H2O호텔, 운영: 나인트리 5개 지점, 10만원 이상, 임직원 상품 제외</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스호텔 식음 전용 1만 바우처</td>
+<td>322</td>
+<td>309</td>
+<td>개발: H2O호텔, 운영: 그랜드/제주/웨스틴, 5만원 이상</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 바우처별 필터링 조건</h3>
+<h4>2.2.1 신규 바우처 (개발: 288, 운영: 286)</h4>
+<ul>
+<li><strong>조건</strong>: 총 결제 금액이 30만원 미만이면 비노출</li>
+</ul>
+<h4>2.2.2 제주 5만원 바우처 (개발: 290, 운영: 289)</h4>
+<ul>
+<li><strong>조건 1</strong>: 제주 호텔(hotelId: 26)이 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 10만원 미만이면 비노출</li>
+</ul>
+<h4>2.2.3 나인트리 바우처 (개발: 299/308, 운영: 292/293)</h4>
+<ul>
+<li><strong>조건 1</strong>: 총 결제 금액 미달 시 비노출 (30만/50만원)</li>
+<li><strong>조건 2</strong>: 체크아웃 날짜 제한 (개발: 2025-12-25, 운영: 2026-02-14 이후 비노출)</li>
+<li><strong>조건 3</strong>: EM 태그(임직원 상품)가 있는 경우 비노출</li>
+</ul>
+<h4>2.2.4 W회원 전용 바우처 (개발: 310, 운영: 295)</h4>
+<ul>
+<li><strong>조건 1</strong>: W회원 중 IC&amp;정 회원만 사용 가능</li>
+<li><strong>조건 2</strong>: 패키지 상품(개발 prodId: 518, 운영 prodId: 727, prodType: 1)에만 노출</li>
+</ul>
+<h4>2.2.5 Parnas Rewards Members Exclusive 패키지 바우처 (개발: 311, 운영: 298)</h4>
+<ul>
+<li><strong>조건 1</strong>: 총 결제 금액이 50만원 미만이면 비노출</li>
+<li><strong>조건 2</strong>: EM, IE 태그(임직원·파르나스 임직원)가 있는 경우 비노출</li>
+<li><strong>조건 3</strong>: 사용 가능 호텔만 노출 (hotelId: 21, 26, 33, 35, 36, 37, 38)</li>
+</ul>
+<h4>2.2.6 신규 바우처 (개발: 312, 운영: 299)</h4>
+<ul>
+<li><strong>조건</strong>: 총 결제 금액이 10만원 미만이면 비노출</li>
+</ul>
+<h4>2.2.7 제주 객실 예약 전용 3만 바우처 (개발: 313, 운영: 300)</h4>
+<ul>
+<li><strong>조건 1</strong>: 제주 호텔(hotelId: 26)이 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 50만원 미만이면 비노출</li>
+</ul>
+<h4>2.2.8 제주 객실 예약 전용 5만 바우처 (개발: 314, 운영: 301)</h4>
+<ul>
+<li><strong>조건 1</strong>: 제주 호텔(hotelId: 26)이 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 50만원 미만이면 비노출</li>
+</ul>
+<h4>2.2.9 이벤트 | Season Exclusive 바우처 (개발: 316/317/318, 운영: 303/304/305)</h4>
+<p><strong>바우처 종류</strong>:</p>
+<ul>
+<li>이벤트 | Season Exclusive 2만 바우처 (개발: 316)</li>
+<li>이벤트 | Season Exclusive 3만 바우처 (개발: 317)</li>
+<li>이벤트 | Season Exclusive 5만 바우처 (개발: 318)</li>
+</ul>
+<p><strong>공통 조건</strong>:</p>
+<ul>
+<li><strong>조건 1</strong>: 개발 환경은 H2O 호텔(hotelId: 39), 운영 환경은 파르나스 호텔 제주(hotelId: 26)가 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 임직원 상품(EM 태그)인 경우 비노출</li>
+<li><strong>조건 3</strong>: 체크인 날짜가 투숙기간(2026-03-09 ~ 2026-04-19)에 속하지 않으면 비노출</li>
+<li><strong>조건 4</strong>: 총 결제 금액 미달 시 비노출<ul>
+<li>2만 바우처: 40만원 미만 시 비노출</li>
+<li>3만 바우처: 70만원 미만 시 비노출</li>
+<li>5만 바우처: 100만원 미만 시 비노출</li>
+</ul>
+</li>
+</ul>
+<h4>2.2.10 기타 필터링</h4>
+<ul>
+<li><strong>EM 태그가 있는 경우</strong>: 쿠폰명에 "객실 업그레이드" 포함 시 비노출 (<code>voucherFilter.ts</code> 내 <code>EM_TAG_COUPON_FILTER_CONFIG</code>, <code>filterCouponByEmTag</code>)</li>
+</ul>
+<h4>2.2.11 신규회원 | 파르나스 호텔 제주 객실 전용 3만 바우처 (개발: 319, 운영: 306)</h4>
+<ul>
+<li><strong>조건 1</strong>: 개발 환경은 H2O 호텔(hotelId: 39), 운영 환경은 파르나스 호텔 제주(hotelId: 26)가 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 30만원 미만이면 비노출</li>
+<li><strong>조건 3</strong>: EM 태그(임직원 상품)가 있는 경우 비노출</li>
+</ul>
+<h4>2.2.12 신규회원 | 그랜드 인터컨티넨탈 서울 파르나스 객실 전용 2만 바우처 (개발: 320, 운영: 307)</h4>
+<ul>
+<li><strong>조건 1</strong>: 개발 환경은 H2O 호텔(hotelId: 39), 운영 환경은 그랜드 인터컨티넨탈 서울 파르나스(hotelId: 21)가 아닌 경우 비노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 30만원 미만이면 비노출</li>
+<li><strong>조건 3</strong>: EM 태그(임직원 상품)가 있는 경우 비노출</li>
+</ul>
+<h4>2.2.13 신규회원 | 나인트리 바이 파르나스 객실 전용 1만 바우처 (개발: 321, 운영: 308)</h4>
+<ul>
+<li><strong>조건 1</strong>: 개발 환경은 H2O 호텔(hotelId: 39)만 노출, 운영 환경은 나인트리 5개 지점(hotelId: 33, 35, 36, 37, 38)만 노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 10만원 미만이면 비노출</li>
+<li><strong>조건 3</strong>: EM 태그(임직원 상품)가 있는 경우 비노출</li>
+</ul>
+<h4>2.2.14 신규회원 | 파르나스호텔 식음 전용 1만 바우처 (개발: 322, 운영: 309)</h4>
+<ul>
+<li><strong>조건 1</strong>: 개발 환경은 H2O 호텔(hotelId: 39)만 노출, 운영 환경은 그랜드(21)/제주(26)/웨스틴(9999)만 노출</li>
+<li><strong>조건 2</strong>: 총 결제 금액이 5만원 미만이면 비노출</li>
+</ul>
+<hr/>
+<h2>3. 결제 관련 하드코딩</h2>
+<h3>3.1 결제 수단 코드</h3>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@containers/ReservationPaymentContainer.tsx</code> (690-710줄)</p>
+<p><strong>결제 수단별 코드 매핑</strong>:</p>
+<ul>
+<li><p><strong>간편결제 (easyPayment)</strong>:</p>
+<ul>
+<li>토스페이: <code>P303</code></li>
+<li>네이버페이: <code>P308-P307</code></li>
+<li>기타: <code>P302</code></li>
+</ul>
+</li>
+<li><p><strong>해외발급카드</strong>: <code>P101-P102-P103-P104-P105-P001-P002-P003-P141-P142-P143-P14</code></p>
+</li>
+<li><p><strong>기본 (국내 카드)</strong>: <code>P000-P302-P303-P304-P306-P307</code></p>
+</li>
+</ul>
+<h3>3.2 계좌이체 코드</h3>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@containers/ReservationPaymentContainer.tsx</code> (467줄)</p>
+<ul>
+<li><strong>계좌이체 타입 코드</strong>: <code>'21'</code></li>
+<li><strong>신용/체크카드 타입 코드</strong>: <code>'11'</code> (주석 참고)</li>
+</ul>
+<hr/>
+<h2>4. 상품 관련 하드코딩</h2>
+<h3>4.1 패키지 상품 ID (W회원 전용 바우처)</h3>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (VOUCHER_FILTER_CONFIGS 내 W회원 바우처 조건)</p>
+<ul>
+<li><strong>개발 패키지 상품 ID</strong>: <code>518</code> (requiredProdIdDev)</li>
+<li><strong>운영 패키지 상품 ID</strong>: <code>727</code> (requiredProdIdProd)</li>
+<li><strong>상품 타입</strong>: <code>1</code> (패키지, requiredProdType)</li>
+<li><strong>용도</strong>: W회원 전용 바우처가 해당 패키지 상품에만 노출되도록 제한</li>
+</ul>
+<hr/>
+<h2>5. 날짜 제한 정책</h2>
+<h3>5.1 나인트리 바우처 체크아웃 날짜 제한</h3>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (checkCheckoutDate, VOUCHER_FILTER_CONFIGS의 checkoutDateLimit)</p>
+<ul>
+<li><strong>개발 환경</strong>: <code>2025-12-25</code> 이후 체크아웃 시 바우처 비노출</li>
+<li><strong>운영 환경</strong>: <code>2026-02-14</code> 이후 체크아웃 시 바우처 비노출</li>
+</ul>
+<h3>5.2 웨스틴 조선 서울 날짜 예외</h3>
+<p><strong>위치</strong>: <code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code> (63-65줄)</p>
+<ul>
+<li>웨스틴 조선 서울 선택 시 모든 날짜를 예약 가능으로 처리</li>
+<li>API 조회 없이 현재 달과 다음 달의 모든 날짜를 선택 가능하게 설정</li>
+</ul>
+<h3>5.3 이벤트 | Season Exclusive 바우처 투숙기간 제한</h3>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (checkDateRange, VOUCHER_FILTER_CONFIGS의 dateRangeStart, dateRangeEnd)</p>
+<ul>
+<li><strong>투숙기간</strong>: 2026-03-09 ~ 2026-04-19</li>
+<li>체크인 날짜가 투숙기간에 속하면 바우처 노출 (체크아웃 날짜는 기간을 벗어나도 가능)</li>
+<li>체크인 날짜가 투숙기간을 벗어나면 비노출</li>
+</ul>
+<hr/>
+<h2>6. 가격 제한 정책</h2>
+<h3>6.1 바우처 사용 최소 금액</h3>
+<table>
+<thead>
+<tr>
+<th>바우처 종류</th>
+<th>최소 금액</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>신규 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 5만원 바우처</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>나인트리 30만원 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>나인트리 50만원 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>Parnas Rewards Members Exclusive 패키지 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규 바우처 (10만원 이상)</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 3만 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>제주 객실 예약 전용 5만 바우처</td>
+<td>500,000원</td>
+<td>50만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 2만 바우처</td>
+<td>400,000원</td>
+<td>40만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 3만 바우처</td>
+<td>700,000원</td>
+<td>70만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>이벤트 | Season Exclusive 5만 바우처</td>
+<td>1,000,000원</td>
+<td>100만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스 호텔 제주 객실 전용 3만 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 그랜드 인터컨티넨탈 서울 파르나스 객실 전용 2만 바우처</td>
+<td>300,000원</td>
+<td>30만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 나인트리 바이 파르나스 객실 전용 1만 바우처</td>
+<td>100,000원</td>
+<td>10만원 미만 시 비노출</td>
+</tr>
+<tr>
+<td>신규회원 | 파르나스호텔 식음 전용 1만 바우처</td>
+<td>50,000원</td>
+<td>5만원 미만 시 비노출</td>
+</tr>
+</tbody>
+</table>
+<p><strong>위치</strong>: <code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (VOUCHER_FILTER_CONFIGS의 minPrice)</p>
+<hr/>
+<h2>7. 메인페이지 하드코딩</h2>
+<p>메인페이지(<code>src/app/page.tsx</code>)의 각 섹션에 사용되는 이미지 경로, 다국어 키, 링크 URL 등이 하드코딩되어 있습니다.</p>
+<h3>7.1 Top Carousel (상단 캐러셀)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/TopCarousel.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li><strong>이미지 경로</strong>: <code>/images/main/topCarousel/topCarousel_1.webp</code> ~ <code>topCarousel_4.webp</code></li>
+<li><strong>다국어 키</strong>: <code>topCarouselTitle_2</code> ~ <code>topCarouselTitle_5</code>, <code>topCarouselContent_2</code> ~ <code>topCarouselContent_5</code></li>
+</ul>
+<p><strong>비고</strong>: 현재 4개의 캐러셀 아이템이 등록되어 있습니다.</p>
+<h3>7.2 Stay Promotion (숙박 프로모션)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/StayPromotion.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>이미지 경로</th>
+<th>다국어 키 (제목/내용)</th>
+<th>링크 URL (하드코딩된 호텔 코드, 상품 ID)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/images/main/stayPromotion/stayPromotion_01.webp</code></td>
+<td><code>parnasRewardsExclusiveTitle</code> / <code>parnasRewardsExclusiveContent</code></td>
+<td><code>/productList/?hotelCode=26&amp;lang=kor&amp;prodID=681</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/images/main/stayPromotion/stayPromotion_02.webp</code></td>
+<td><code>bedBreakfastPromotionsTitle</code> / <code>bedBreakfastPackageContent</code></td>
+<td><code>/productList/?hotelCode=26&amp;lang=kor&amp;prodID=253</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/images/main/stayPromotion/stayPromotion_03.webp</code></td>
+<td><code>stayPromotionGrandTitle</code> / <code>stayPromotionGrandContent</code></td>
+<td><code>/productList/?hotelCode=21&amp;lang=ko&amp;prodID=691</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>/images/main/stayPromotion/stayPromotion_04.webp</code></td>
+<td><code>stayPromotionJejuTitle</code> / <code>stayPromotionJejuContent</code></td>
+<td><code>/productList/?hotelCode=26&amp;lang=kor&amp;prodID=282</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>/images/main/stayPromotion/stayPromotion_05.webp</code></td>
+<td><code>stayPromotionNineTreeTitle</code> / <code>stayPromotionNineTreeContent</code></td>
+<td><code>/productList/?hotelCode=36&amp;lang=kr&amp;prodID=441</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>모바일 버전</strong>: <code>StayPromotionMobileList</code>에 모바일 전용 다국어 키가 별도로 정의되어 있습니다.</p>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li>링크 URL에 호텔 코드(<code>hotelCode</code>), 언어(<code>lang</code>), 상품 ID(<code>prodID</code>)가 하드코딩되어 있습니다.</li>
+<li>메인 이미지(<code>stayPromotion_00.webp</code>)는 별도로 하드코딩되어 있습니다. (파일: <code>src/app/@components/StayPromotionForm.tsx</code> 31줄)</li>
+</ul>
+<h3>7.3 Dining Experience (다이닝 경험)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/DiningExperience.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<h4>그랜드 인터컨티넨탈 서울 파르나스 (웨이루 위켄드 딤섬)</h4>
+<ul>
+<li><strong>이미지</strong>: <code>/images/main/diningExperience/diningGrandExperience_01.webp</code></li>
+<li><strong>로고</strong>: <code>/images/main/diningExperience/diningGrandExperienceLogo_01.webp</code></li>
+<li><strong>다국어 키</strong>: <code>diningExperienceGrandTitle</code>, <code>diningExperienceGrandContent</code>, <code>diningExperienceGrandPeriod</code>, <code>diningExperienceGrandLocation</code> (콘텐츠 변경 시 번역 값만 수정, 키는 고정)</li>
+<li><strong>diningId</strong>: <code>'131'</code></li>
+<li><strong>hotelId</strong>: <code>'grand'</code></li>
+</ul>
+<h4>파르나스 호텔 제주</h4>
+<ul>
+<li><strong>이미지</strong>: <code>/images/main/diningExperience/diningJejuExperience_01.webp</code></li>
+<li><strong>로고</strong>: <code>/images/main/diningExperience/diningJejuExperienceLogo_01.webp</code></li>
+<li><strong>다국어 키</strong>: <code>diningExperienceJejuTitle</code>, <code>diningExperienceJejuContent</code>, <code>diningExperienceJejuPeriod</code>, <code>diningExperienceJejuOperationHours</code>, <code>diningExperienceJejuLocation</code></li>
+<li><strong>diningId</strong>: <code>'163'</code></li>
+<li><strong>hotelId</strong>: <code>'jeju'</code></li>
+</ul>
+<h4>웨스틴 서울 파르나스 (더 로그 클래식 애프터눈 티)</h4>
+<ul>
+<li><strong>이미지</strong>: <code>/images/main/diningExperience/diningWestinExperience_01.webp</code></li>
+<li><strong>로고</strong>: <code>/images/main/diningExperience/diningWestinExperienceLogo_01.webp</code></li>
+<li><strong>다국어 키</strong>: <code>diningExperienceWestinTitle</code>, <code>diningExperienceWestinContent</code>, <code>diningExperienceWestinPeriod</code>, <code>diningExperienceWestinLocation</code> (콘텐츠 변경 시 번역 값만 수정, 키는 고정)</li>
+<li><strong>diningId</strong>: <code>'166'</code></li>
+<li><strong>hotelId</strong>: <code>'westin'</code></li>
+</ul>
+<p><strong>탭 리스트</strong>:</p>
+<ul>
+<li>PC: <code>tabList</code> - <code>[{ title: 'parnasHotelJeju', value: '2' }, { title: 'grandIntercontinentalSeoulParnas', value: '1' }, { title: 'westinSeoulParnas', value: '3' }]</code></li>
+<li>모바일: <code>tabMobileList</code> - <code>[{ title: 'parnasHotelJeju', value: '2' }, { title: 'grandIntercontinentalSeoulParnasJump', value: '1' }, { title: 'westinSeoulParnas', value: '3' }]</code></li>
+</ul>
+<p><strong>다이닝 예약 URL (그랜드/제주/웨스틴)</strong>:</p>
+<ul>
+<li><strong>위치</strong>: <code>src/app/@constant/DiningExperience.tsx</code> - <code>DINING_URL_GRAND</code>, <code>DINING_URL_JEJU</code>, <code>DINING_URL_WESTIN</code> 상수</li>
+<li>그랜드/제주/웨스틴 버튼 클릭 시 위 URL로 현재 창에서 이동 (파일: <code>src/app/@container/DiningExperienceContainer.tsx</code>)</li>
+</ul>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li><code>diningId</code>와 <code>hotelId</code>는 다이닝 예약 페이지로 이동할 때 사용됩니다.</li>
+<li>호텔명 매핑이 하드코딩되어 있습니다. (파일: <code>src/app/@components/DiningExperienceForm.tsx</code> 400-402줄, 583-585줄)</li>
+</ul>
+<h3>7.4 Parnas Hotel Brands (파르나스 호텔 브랜드)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/ParnasHotelBrands.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>호텔명</th>
+<th>이미지 경로</th>
+<th>로고 경로</th>
+<th>호버 이미지</th>
+<th>다국어 키</th>
+<th>외부 링크 URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Grand InterContinental Seoul Parnas</td>
+<td><code>/images/main/parnasHotelBrands/parnasSeoul.webp</code></td>
+<td><code>/images/main/parnasHotelBrands/parnasSeoul_logo.png</code></td>
+<td><code>/images/main/parnasHotelBrands/parnasSeoul_hover.webp</code></td>
+<td><code>grandBrandsContentNew</code></td>
+<td><code>https://seoul.intercontinental.com/</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Parnas Hotel Jeju</td>
+<td><code>/images/main/parnasHotelBrands/parnasJeju.webp</code></td>
+<td><code>/images/main/parnasHotelBrands/parnasJeju_logo.png</code></td>
+<td><code>/images/main/parnasHotelBrands/parnasJeju_hover.webp</code></td>
+<td><code>jejuBrandsContentNew</code></td>
+<td><code>https://www.parnashoteljeju.com/</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>The Westin Seoul Parnas</td>
+<td><code>/images/main/parnasHotelBrands/westinSeoulParnas.webp</code></td>
+<td><code>/images/main/parnasHotelBrands/westinSeoulParnas_logo.png</code></td>
+<td><code>/images/main/parnasHotelBrands/westinSeoulParnas_hover.webp</code></td>
+<td><code>westinBrandsContentNew</code></td>
+<td><code>https://thewestinseoulparnas.com</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Nine Tree by Parnas</td>
+<td><code>/images/main/parnasHotelBrands/ninetree.webp</code></td>
+<td><code>/images/main/parnasHotelBrands/ninetree_logo.png</code></td>
+<td><code>/images/main/parnasHotelBrands/ninetree_hover.webp</code></td>
+<td><code>nineTreeBrandsContent</code></td>
+<td><code>https://www.ninetreehotels.com/</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>모바일 버전</strong>: <code>ParnasHotelBrandsMobileList</code>에 모바일 전용 다국어 키가 별도로 정의되어 있습니다.</p>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li>호텔명은 하드코딩된 영문명을 사용합니다.</li>
+<li>외부 링크 URL이 하드코딩되어 있습니다.</li>
+</ul>
+<h3>7.5 Parnas Hotel Collection (파르나스 호텔 컬렉션)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/ParnasHotelCollection.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>이미지 경로</th>
+<th>다국어 키 (제목/부제목/내용)</th>
+<th>링크 URL (환경별)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>/images/main/parnasHotelCollection/parnasHotelCollection_2.webp</code></td>
+<td><code>signatureScentTitle</code> / <code>signatureScentSubTitle</code> / <code>signatureScentContent</code></td>
+<td>개발: <code>http://10.15.6.124/ko/lifestyle/shop</code><br/>운영: <code>https://seoul.intercontinental.com/ko/lifestyle/shop</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>/images/main/parnasHotelCollection/parnasHotelCollection_3.webp</code></td>
+<td><code>premiumBeddingTitle</code> / <code>premiumBeddingSubTitle</code> / <code>premiumBeddingContent</code></td>
+<td>개발: <code>http://10.15.6.124/ko/lifestyle/shop</code><br/>운영: <code>https://seoul.intercontinental.com/ko/lifestyle/shop</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>/images/main/parnasHotelCollection/parnasHotelCollection_4.webp</code></td>
+<td><code>homeGourmetTitle</code> / <code>homeGourmetSubTitle</code> / <code>homeGourmetContent</code></td>
+<td>개발: <code>http://10.15.6.124/ko/lifestyle/shop</code><br/>운영: <code>https://seoul.intercontinental.com/ko/lifestyle/shop</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>배경 이미지</strong>: <code>/images/main/parnasHotelCollection/parnasHotelCollection_1.webp</code> (파일: <code>src/app/@components/ParnasHotelCollectionForm.tsx</code> 24줄)</p>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li>링크 URL이 환경 변수(<code>NEXT_PUBLIC_APP_ENV</code>)에 따라 다르게 설정되어 있습니다.</li>
+</ul>
+<h3>7.6 Parnas Rewards The Parnas (파르나스 리워즈 더 파르나스)</h3>
+<p><strong>위치</strong>: <code>src/app/@constant/ParnasRewardsTheParnas.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>이미지 경로</th>
+<th>서브 이미지 경로</th>
+<th>다국어 키 (제목/내용)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>파르나스 리워즈</td>
+<td><code>/images/main/parnasRewardsTheParnas/parnasRewards_1.webp</code></td>
+<td><code>/images/main/parnasRewardsTheParnas/parnasRewards_2.webp</code></td>
+<td><code>parnasRewardsEn</code> / <code>parnasRewardsContent</code></td>
+</tr>
+<tr>
+<td>더 파르나스</td>
+<td><code>/images/main/parnasRewardsTheParnas/theParnas_1.webp</code></td>
+<td><code>/images/main/parnasRewardsTheParnas/theParnas_2.webp</code></td>
+<td><code>The Parnas</code> (하드코딩) / <code>theParnasContentNew</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li>"The Parnas" 제목은 하드코딩된 영문 텍스트를 사용합니다. (다국어 키 아님)</li>
+</ul>
+<hr/>
+<h2>8. 호텔 소개 페이지 하드코딩</h2>
+<h3>8.1 호텔 소개 (Introduction)</h3>
+<p><strong>위치</strong>: <code>src/app/hotel/introduction/@constant/Introduction.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<h4>호텔 선택 리스트 (<code>HotelSelectList</code>)</h4>
+<p>10개의 호텔 정보가 하드코딩되어 있습니다:</p>
+<ul>
+<li>이미지 경로: <code>/images/hotel/introduction/hotelSelect/hotelSelect_1.png</code> ~ <code>hotelSelect_10.png</code></li>
+<li>로고 경로: <code>/images/hotel/introduction/hotelSelect/logo/logo_1.png</code> ~ <code>logo_10.png</code></li>
+<li>다국어 키: <code>introductionItemhotel1</code> ~ <code>introductionItemhotel10</code>, 각 호텔별 <code>since</code>, <code>address</code>, <code>tel</code>, <code>subTitle</code>, <code>content</code> 등</li>
+<li>외부 링크 URL: 각 호텔별 웹사이트 URL 하드코딩</li>
+<li>특이사항: 일부 호텔의 <code>since</code> 필드에 하드코딩된 날짜가 있습니다 (예: <code>'2024.9.23'</code>, <code>'parnasHotelJejuSince'</code>)</li>
+</ul>
+<h4>소개 리스트 (<code>IntroductionListNew</code>)</h4>
+<p>5개의 비즈니스 영역 소개가 하드코딩되어 있습니다:</p>
+<ul>
+<li>이미지 경로: <code>/images/hotel/introduction/business_1.png</code> ~ <code>business_5.png</code></li>
+<li>다국어 키: <code>introductionItemTitle1</code> ~ <code>introductionItemTitle5</code>, <code>introductionItemContent1</code> ~ <code>introductionItemContent5</code> 등</li>
+</ul>
+<h4>통계 숫자 (<code>IntroductionListNumber</code>)</h4>
+<p>5개의 통계 정보가 하드코딩되어 있습니다:</p>
+<ul>
+<li>이미지 경로: <code>/images/hotel/introduction/hotel.png</code>, <code>bed.png</code>, <code>trophy.png</code>, <code>graph.png</code>, <code>card_key.png</code></li>
+<li>하드코딩된 텍스트: <code>'총 호텔 수'</code>, <code>'총 객실 수'</code>, <code>'국내 호텔 영업이익 순위'</code> 등 (다국어 키 아님)</li>
+<li>숫자: <code>'11'</code>, <code>'2,808'</code>, <code>'1'</code>, <code>'25'</code>, <code>'86'</code> 등</li>
+</ul>
+<h3>8.2 CEO 인사말</h3>
+<p><strong>위치</strong>: <code>src/app/hotel/ceo/@constant/Ceo.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li>이미지 경로: <code>/images/hotel/ceo/ceo-portrait.png</code>, <code>/images/hotel/ceo/ceo-portrait5.jpg</code></li>
+<li>다국어 키: <code>ceoTitle</code>, <code>ceoSubtitle</code>, <code>ceoHighlightText</code>, <code>ceoMessage</code>, <code>ceoMessageMobile</code></li>
+</ul>
+<h3>8.3 Heritage (역사)</h3>
+<p><strong>위치</strong>: <code>src/app/hotel/heritage/@constant/Heritage.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li>이미지 경로: <code>/images/hotel/heritage/2025.png</code>, <code>2024.png</code>, <code>2019.png</code>, <code>2010.png</code>, <code>2000.png</code></li>
+<li>다국어 키: <code>heritage2025Title</code>, <code>heritage2024Title</code>, <code>heritage2019Title</code>, <code>heritage2010Title</code>, <code>heritage2000Title</code> 등</li>
+<li>날짜: 각 기간별 이벤트 날짜가 하드코딩되어 있습니다 (예: <code>'2026. 12'</code>, <code>'2025. 09'</code> 등)</li>
+<li>이미지 alt 텍스트: 하드코딩된 한글 텍스트 (예: <code>'웨스틴 서울 파르나스'</code>, <code>'2020-2024 파르나스호텔'</code>)</li>
+</ul>
+<h3>8.4 Vision (비전)</h3>
+<p><strong>위치</strong>: <code>src/app/hotel/vision/@constant/Vision.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li><strong>대부분의 텍스트가 하드코딩된 한글/영문 텍스트</strong>로 작성되어 있습니다 (다국어 키 사용 안 함)</li>
+<li>제목: <code>' 파르나스호텔 비전'</code>, <code>'Global Leading Lifestyle Company, Parnas Hotel'</code></li>
+<li>섹션별 제목: <code>'Vision'</code>, <code>'Core Values'</code>, <code>'People'</code>, <code>'Parnas Way'</code></li>
+<li>모든 내용 텍스트가 하드코딩되어 있습니다</li>
+</ul>
+<p><strong>특이사항</strong>: Vision 페이지는 다국어 지원이 되지 않으며, 모든 텍스트가 하드코딩되어 있습니다.</p>
+<h3>8.5 Sustainability (지속가능경영)</h3>
+<p><strong>위치</strong>: <code>src/app/hotel/sustainability/@constant/Sustainability.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<h4>메인 섹션</h4>
+<ul>
+<li>이미지 경로: <code>/images/hotel/sustainability/sustainability_main.png</code></li>
+<li>하드코딩된 텍스트: <code>'글로벌 환경경영으로\n지구환경을 지킵니다.'</code> 등 (다국어 키 아님)</li>
+</ul>
+<h4>탭 리스트</h4>
+<ul>
+<li>다국어 키: <code>environment</code>, <code>social</code>, <code>governance</code></li>
+</ul>
+<h4>링크 URL (언어별)</h4>
+<ul>
+<li><code>CONSULT_REPORT_URL</code>: 언어별로 다른 URL이 하드코딩되어 있습니다<ul>
+<li>ko: <code>'https://seoul.intercontinental.com/ko/ethics-hotline'</code></li>
+<li>en: <code>'https://seoul.intercontinental.com/en/ethics-hotline'</code></li>
+<li>ch: <code>'https://seoul.intercontinental.com/zh/ethics-hotline'</code></li>
+<li>jp: <code>'https://seoul.intercontinental.com/ja/ethics-hotline'</code></li>
+</ul>
+</li>
+</ul>
+<h4>각종 리스트</h4>
+<ul>
+<li><code>EcoActivityList</code>: 이미지 경로, 다국어 키 (<code>bambooKeyCard</code>, <code>greenCardInRoom</code> 등)</li>
+<li><code>EnergySaveList</code>: 이미지 경로, 다국어 키 (<code>earthHourParticipation</code>, <code>highEfficiencyLightingSolar</code> 등)</li>
+<li><code>EsgHighlightList</code>: 이미지 경로, 다국어 키, 날짜 (<code>'2024.05.17'</code> 등)</li>
+<li><code>CommunityContributionList</code>: 이미지 경로, 다국어 키</li>
+<li><code>EmployeeWelfareProgramList</code>: 이미지 경로, 다국어 키</li>
+<li><code>EthicalManagementList</code>: 이미지 경로, 다국어 키</li>
+<li><code>EthicalRegulationsList</code>: 다국어 키 (복잡한 구조)</li>
+<li><code>IhgEthicalRegulationsList</code>: 다국어 키 (17개 항목)</li>
+</ul>
+<hr/>
+<h2>9. 멤버십 페이지 하드코딩</h2>
+<h3>9.1 더 파르나스 주요 혜택</h3>
+<p><strong>위치</strong>: <code>src/app/membership/@constant/theParnasMainBenefitsConfig.ts</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li>이미지 경로: <code>/svg/main_benefit_01.svg</code> ~ <code>main_benefit_05.svg</code></li>
+<li>다국어 키: <code>freeRoomVoucher</code>, <code>restaurantVoucher</code>, <code>wineExchangeVoucher</code>, <code>yearlyRoomDiscount</code>, <code>yearlyRestaurantDiscount</code></li>
+</ul>
+<h3>9.2 파르나스 리워즈 혜택</h3>
+<p><strong>위치</strong>: <code>src/app/membership/@constant/rewardsConfig.ts</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li>이미지 경로: <code>/images/common/grand_white.svg</code>, <code>/images/membership/grand_bg.jpg</code>, <code>/images/membership/grand_slide_01.png</code> 등</li>
+<li>다국어 키: 각 호텔별 탭, 슬라이드 제목/설명 등</li>
+<li>호텔별 로고, 배경 이미지, 슬라이드 이미지가 하드코딩되어 있습니다</li>
+</ul>
+<hr/>
+<h2>10. 마이프로필 페이지 하드코딩</h2>
+<h3>10.1 대시보드</h3>
+<p><strong>위치</strong>: <code>src/app/myProfile/dashboard/@constants/dashboard.ts</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<h4>파르나스 리워즈 전용 상품 (<code>ParnasRewardsExclusiveList</code>)</h4>
+<ul>
+<li>이미지 경로: <code>/images/myProfile/dashboard_1.png</code>, <code>dashboard_2.png</code>, <code>dashboard_3.png</code></li>
+<li>다국어 키: <code>ladiesNightOutTitle</code>, <code>ladiesNightOutContent</code>, <code>membersExclusiveTitle</code> 등</li>
+<li>링크 URL: <code>/productList/?hotelCode=26&amp;lang=kor&amp;prodID=681</code> 등 (호텔 코드, 상품 ID 하드코딩)</li>
+<li>가격: <code>'KRW 670,279 -'</code>, <code>'KRW 657,955 -'</code> (하드코딩)</li>
+</ul>
+<h4>등급별 혜택 리스트</h4>
+<ul>
+<li>이미지 경로: <code>/images/rewardsPopup/club.png</code>, <code>V1.png</code>, <code>V2.png</code>, <code>V3.png</code>, <code>V4.png</code></li>
+<li>웨딩 등급 이미지: <code>/images/member/club+w.png</code>, <code>V1+w.png</code> 등</li>
+<li>다국어 키: 각 등급별 혜택 설명 키</li>
+</ul>
+<h3>10.2 호텔 정보 (인보이스용)</h3>
+<p><strong>위치</strong>: <code>src/app/myProfile/reservations/@constants/hotelInfo.ts</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li>호텔명 타입: 13개의 호텔명이 하드코딩되어 있습니다</li>
+<li>이미지 경로: <code>/images/invoice/hotel-logo/</code> 폴더 내 각 호텔별 로고</li>
+<li>주소 (영문/한글): 각 호텔별 주소가 하드코딩되어 있습니다</li>
+<li>사업자 정보: 사업자 번호, 연락처, 대표자명이 하드코딩되어 있습니다</li>
+</ul>
+<p><strong>특이사항</strong>: 인보이스 출력 시 사용되는 호텔 정보로, 정확한 정보 유지가 중요합니다.</p>
+<hr/>
+<h2>11. 이벤트 팝업 하드코딩</h2>
+<h3>11.1 홈페이지 이벤트 팝업 (<code>/</code>)</h3>
+<p><strong>위치</strong>: <code>src/app/eventPopup/@containers/EventPopupContainer.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li><strong>다국어 키</strong>: <code>eventPopupTitle</code>, <code>eventPopupTitle2</code>, <code>eventPopupPeriod</code>, <code>eventPopupHotel</code>, <code>eventPopupBenefits</code>, <code>eventPopupInhouseDate</code>, <code>eventPopupDescription</code>, <code>eventPopupTermUse</code>, <code>eventPopupBtn</code>, <code>eventPopupBtn2</code>, <code>eventRedirectUrl</code>, <code>eventRedirectUrl2</code>, <code>eventStartDate</code>, <code>eventEndDate</code></li>
+<li><strong>로고 이미지</strong>: <code>/images/common/parnas_w_btext.png</code></li>
+<li><strong>localStorage 키</strong>: <code>parnas_popup_hide</code></li>
+<li><strong>표시 조건</strong>:<ul>
+<li>현재 날짜가 <code>eventStartDate</code>와 <code>eventEndDate</code> 사이에 있는 경우</li>
+<li>"오늘 하루 보지 않기"를 선택하지 않은 경우</li>
+</ul>
+</li>
+<li><strong>표시 페이지</strong>: <code>['/']</code> (홈페이지만)</li>
+</ul>
+<h3>11.2 상품 목록 페이지 이벤트 팝업 (<code>/productList</code>)</h3>
+<p><strong>위치</strong>: <code>src/app/eventPopup/@containers/EventPopupContainer.tsx</code></p>
+<p><strong>하드코딩 내용</strong>:</p>
+<ul>
+<li><strong>호텔 ID</strong>: <code>26</code> (파르나스 호텔 제주, <code>HOTEL_ID.PARNAS_HOTEL_JEJU</code>)</li>
+<li><strong>이벤트 기간</strong>: <code>PARNAS_JEJU_SPECIAL_PERIOD_START_DATE</code> ~ <code>PARNAS_JEJU_SPECIAL_PERIOD_END_DATE</code> (2026-03-09 ~ 2026-04-19, <code>src/@shared/@constants/parnasJejuPeriod.ts</code>)</li>
+<li><strong>다국어 키</strong>: <code>productListEventPopupTitle</code>, <code>productListEventPopupTitle2</code>, <code>productListEventPopupBenefits</code>, <code>productListEventPopupHotel</code>, <code>productListEventPopupDescription</code>, <code>productListEventPopupTermUse</code>, <code>productListEventPopupBtn</code>, <code>productListEventPopupBtn2</code>, <code>productListEventRedirectUrl</code>, <code>productListEventRedirectUrl2</code></li>
+<li><strong>로고 이미지</strong>: <code>/images/common/parnas_logo.webp</code> (홈페이지 팝업은 <code>/images/common/parnas_w_btext.png</code> 사용)</li>
+<li><strong>localStorage 키</strong>: <code>parnas_popup_shown_product_list</code></li>
+<li><strong>표시 조건</strong>:<ol>
+<li>현재 페이지가 <code>/productList</code>인 경우</li>
+<li>선택한 호텔 목록에 파르나스 호텔 제주(호텔 ID: 26)가 포함되어 있는 경우</li>
+<li>체크인/체크아웃 기간이 이벤트 기간(2026-03-09 ~ 2026-04-19)과 하루라도 겹치는 경우</li>
+<li>이전에 팝업을 닫은 적이 없는 경우 (한 번만 표시)</li>
+</ol>
+</li>
+<li><strong>표시 방식</strong>: 한 번 닫으면 영구적으로 표시하지 않음 (오늘 하루 보지 않기 기능 없음)</li>
+</ul>
+<p><strong>특이사항</strong>:</p>
+<ul>
+<li><code>/</code> 페이지와 <code>/productList</code> 페이지의 이벤트 팝업은 완전히 독립적으로 동작합니다.</li>
+<li>각 페이지별로 다른 다국어 키와 localStorage 키를 사용합니다.</li>
+<li><code>/productList</code> 팝업은 조건을 만족하면 한 번만 표시되며, 닫으면 다시 표시되지 않습니다.</li>
+</ul>
+<hr/>
+<h2>변경 시 주의사항</h2>
+<h3>정책 변경 시 확인해야 할 파일</h3>
+<ol>
+<li><p><strong>웨스틴 조선 서울 정책 변경</strong></p>
+<ul>
+<li><code>src/app/productList/@hooks/useWestinHotel.ts</code></li>
+<li><code>src/@shared/RoomSearchPanel/@hooks/useSelectRangeDate.ts</code></li>
+<li><code>src/app/productList/@constants/index.ts</code> (URL 변경 시)</li>
+</ul>
+</li>
+<li><p><strong>바우처 필터링 정책 변경</strong></p>
+<ul>
+<li><code>src/app/reservationPayment/@utils/voucherFilter.ts</code> (VOUCHER_FILTER_CONFIGS, filterCouponList)</li>
+<li><code>src/app/reservationPayment/@containers/ReservationPaymentContainer.tsx</code> (filterCouponList 호출부)</li>
+</ul>
+</li>
+</ol>
+<p>2-1. <strong>제주 호텔 시설 예약 공사 기간 주의문구 변경</strong></p>
+<ul>
+<li><code>src/app/reservationPayment/@components/paymentSelector/PaymentMethodSelector.tsx</code> (공사 기간, 주의문구 노출 로직)</li>
+<li>다국어 키 <code>jejuConstructionNotice</code> (구글 스프레드시트 업데이트 후 <code>yarn language</code> 실행)</li>
+</ul>
+<ol start="3">
+<li><p><strong>호텔 카테고리 변경</strong></p>
+<ul>
+<li><code>src/@shared/RoomSearchPanel/@constants/index.tsx</code> (25-34줄)</li>
+</ul>
+</li>
+<li><p><strong>호텔 주소 변경</strong></p>
+<ul>
+<li><code>src/@shared/RoomSearchPanel/@constants/index.tsx</code> (14-23줄)</li>
+<li>다국어 파일도 함께 수정 필요</li>
+</ul>
+</li>
+<li><p><strong>메인페이지 콘텐츠 변경</strong></p>
+<ul>
+<li><code>src/app/@constant/</code> 폴더 내 각 상수 파일</li>
+<li>이미지 파일: <code>public/images/main/</code> 폴더</li>
+<li>다국어 키 추가/변경 시 구글 스프레드시트 업데이트 후 <code>yarn language</code> 실행 필요</li>
+<li>링크 URL 변경 시 상수 파일과 함께 확인 필요</li>
+</ul>
+</li>
+<li><p><strong>호텔 소개 페이지 콘텐츠 변경</strong></p>
+<ul>
+<li><code>src/app/hotel/introduction/@constant/Introduction.tsx</code></li>
+<li><code>src/app/hotel/ceo/@constant/Ceo.tsx</code></li>
+<li><code>src/app/hotel/heritage/@constant/Heritage.tsx</code></li>
+<li><code>src/app/hotel/vision/@constant/Vision.tsx</code> (다국어 미지원)</li>
+<li><code>src/app/hotel/sustainability/@constant/Sustainability.tsx</code></li>
+<li>이미지 파일: <code>public/images/hotel/</code> 폴더</li>
+<li>Vision 페이지는 다국어 키를 사용하지 않으므로 텍스트 변경 시 코드 직접 수정 필요</li>
+</ul>
+</li>
+<li><p><strong>멤버십 페이지 콘텐츠 변경</strong></p>
+<ul>
+<li><code>src/app/membership/@constant/</code> 폴더 내 각 상수 파일</li>
+<li>이미지 파일: <code>public/images/membership/</code>, <code>public/svg/</code> 폴더</li>
+</ul>
+</li>
+<li><p><strong>마이프로필 페이지 콘텐츠 변경</strong></p>
+<ul>
+<li><code>src/app/myProfile/dashboard/@constants/dashboard.ts</code></li>
+<li><code>src/app/myProfile/reservations/@constants/hotelInfo.ts</code> (인보이스용 호텔 정보)</li>
+<li>이미지 파일: <code>public/images/myProfile/</code>, <code>public/images/rewardsPopup/</code>, <code>public/images/member/</code> 폴더</li>
+<li>호텔 정보 변경 시 사업자 정보 등 정확성 확인 필수</li>
+</ul>
+</li>
+<li><p><strong>이벤트 팝업 정책 변경</strong></p>
+<ul>
+<li><code>src/app/eventPopup/@containers/EventPopupContainer.tsx</code></li>
+<li>홈페이지 팝업: 다국어 키 변경 시 구글 스프레드시트 업데이트 후 <code>yarn language</code> 실행 필요</li>
+<li>상품 목록 페이지 팝업:<ul>
+<li>호텔 ID: <code>src/@shared/@constants/hotelId.ts</code>의 <code>HOTEL_ID.PARNAS_HOTEL_JEJU</code></li>
+<li>이벤트 기간: <code>src/@shared/@constants/parnasJejuPeriod.ts</code>의 <code>PARNAS_JEJU_SPECIAL_PERIOD_START_DATE</code>, <code>PARNAS_JEJU_SPECIAL_PERIOD_END_DATE</code> 수정</li>
+<li>다국어 키 변경: 구글 스프레드시트에 <code>productListEventPopup*</code> 키 추가 후 <code>yarn language</code> 실행</li>
+</ul>
+</li>
+<li>로고 이미지 변경: 홈페이지 <code>public/images/common/parnas_w_btext.png</code>, 상품 목록 <code>public/images/common/parnas_logo.webp</code> 파일 교체</li>
+</ul>
+</li>
+</ol>
+<h3>환경 변수 확인</h3>
+<ul>
+<li><code>process.env.NEXT_PUBLIC_APP_ENV === 'development'</code>: 개발/운영 환경 구분</li>
+<li>바우처 ID가 환경별로 다르게 설정되어 있으므로 변경 시 주의</li>
+</ul>
+<hr/>
+<h2>문의 및 업데이트</h2>
+<p>이 문서는 프로젝트의 하드코딩된 정책을 정리한 것입니다. 정책 변경 시 이 문서도 함께 업데이트해 주세요.</p>
+<p><strong>최종 업데이트</strong>: 2026년 2월</p>
+</div>
+</section>
+<div class="footer">하드코딩 정책 운영매뉴얼 · 단일 HTML 파일</div>
+</main>
+</div>

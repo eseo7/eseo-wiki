@@ -1,0 +1,398 @@
+<div class="wiki-doc-embed" data-source="opera_point_recovery_manual.html">
+<style>
+
+    :host {
+      --bg:#f5f7fb; --panel:#ffffff; --ink:#172033; --muted:#64748b; --line:#e5e7eb;
+      --navy:#14213d; --blue:#315efb; --sky:#eaf0ff; --green:#0f9f6e; --red:#d04444;
+      --yellow:#fff4d6; --purple:#6d5dfc; --shadow:0 18px 45px rgba(15, 23, 42, .08);
+      --radius:22px;
+    }
+    * { box-sizing:border-box; }
+    .wiki-doc-embed{ scroll-behavior:smooth; }
+    .wiki-doc-embed{
+      margin:0; background:linear-gradient(180deg,#f7f9ff 0%, #eef2f8 100%); color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;
+      line-height:1.65;
+    }
+    a { color:inherit; }
+    .topbar { position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(255,255,255,.82); border-bottom:1px solid rgba(226,232,240,.9); }
+    .top-inner { max-width:1240px; margin:0 auto; padding:14px 22px; display:flex; align-items:center; gap:16px; }
+    .brand { display:flex; align-items:center; gap:12px; min-width:260px; }
+    .logo { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--navy),var(--blue)); color:#fff; font-weight:900; letter-spacing:-.04em; }
+    .brand h1 { margin:0; font-size:17px; line-height:1.15; letter-spacing:-.04em; }
+    .brand p { margin:2px 0 0; font-size:12px; color:var(--muted); }
+    .nav { display:flex; gap:8px; overflow:auto; padding-bottom:2px; flex:1; }
+    .nav a { text-decoration:none; white-space:nowrap; padding:9px 12px; border-radius:999px; font-size:13px; color:#334155; border:1px solid transparent; }
+    .nav a:hover { background:var(--sky); color:var(--blue); border-color:#d6defe; }
+    .actions { display:flex; gap:8px; }
+    button, .btn { cursor:pointer; border:0; border-radius:999px; padding:10px 14px; background:var(--navy); color:#fff; font-weight:700; font-size:13px; text-decoration:none; display:inline-flex; align-items:center; gap:7px; }
+    button.secondary, .btn.secondary { background:#eef2ff; color:#273b8f; }
+    .wrap { max-width:1240px; margin:0 auto; padding:32px 22px 70px; }
+    .hero { background:radial-gradient(circle at top right,rgba(49,94,251,.22),transparent 35%), linear-gradient(135deg,#101827,#1c2b52); color:#fff; border-radius:30px; padding:38px; box-shadow:var(--shadow); overflow:hidden; position:relative; }
+    .hero:after { content:""; position:absolute; right:-80px; bottom:-90px; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,.08); }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; background:rgba(255,255,255,.12); font-size:13px; font-weight:700; }
+    .hero h2 { margin:18px 0 10px; font-size:36px; line-height:1.2; letter-spacing:-.065em; }
+    .hero p { max-width:820px; margin:0; color:#dbe6ff; font-size:16px; }
+    .hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:26px; position:relative; z-index:1; }
+    .hero-card { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:18px; padding:16px; }
+    .hero-card b { display:block; font-size:12px; color:#b9c8ff; }
+    .hero-card span { display:block; margin-top:6px; font-size:16px; font-weight:800; }
+    .searchbox { margin:22px 0 0; display:flex; gap:10px; position:relative; z-index:1; }
+    .searchbox input { width:100%; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.12); color:#fff; padding:14px 16px; border-radius:16px; outline:none; font-size:14px; }
+    .searchbox input::placeholder { color:#cbd5e1; }
+    section { margin-top:26px; }
+    .section-title { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; margin:0 0 14px; }
+    .section-title h3 { margin:0; font-size:24px; letter-spacing:-.055em; }
+    .section-title p { margin:4px 0 0; color:var(--muted); font-size:14px; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:24px; box-shadow:0 10px 28px rgba(15,23,42,.05); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:20px; padding:20px; }
+    .card h4 { margin:0 0 9px; font-size:17px; letter-spacing:-.04em; }
+    .card p { margin:0; color:var(--muted); font-size:14px; }
+    .tag { display:inline-flex; padding:5px 9px; border-radius:999px; font-size:12px; font-weight:800; background:var(--sky); color:var(--blue); margin-right:6px; }
+    .tag.green { background:#e6f8f1; color:#05815a; }
+    .tag.red { background:#fff0f0; color:#c83333; }
+    .tag.yellow { background:var(--yellow); color:#8a5d00; }
+    .tag.purple { background:#f0edff; color:#5742d2; }
+    .flow { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+    .step { position:relative; background:#fff; border:1px solid var(--line); border-radius:20px; padding:18px; min-height:142px; }
+    .step .num { width:30px; height:30px; border-radius:10px; display:grid; place-items:center; background:var(--navy); color:#fff; font-weight:900; font-size:13px; }
+    .step h4 { margin:12px 0 7px; font-size:16px; letter-spacing:-.04em; }
+    .step p { margin:0; color:var(--muted); font-size:13px; }
+    table { width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    th, td { padding:13px 14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:14px; }
+    th { background:#f8fafc; color:#334155; font-weight:900; white-space:nowrap; }
+    tr:last-child td { border-bottom:0; }
+    code { font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; background:#f1f5f9; padding:.15em .35em; border-radius:6px; color:#0f172a; }
+    pre { position:relative; margin:0; background:#0b1020; color:#e6edf7; border-radius:18px; padding:18px; overflow:auto; border:1px solid #1f2937; }
+    pre code { background:transparent; color:inherit; padding:0; border-radius:0; display:block; font-size:13px; line-height:1.6; }
+    .codebox { position:relative; }
+    .copy { position:absolute; top:10px; right:10px; background:#ffffff; color:#172033; padding:7px 10px; font-size:12px; box-shadow:0 6px 14px rgba(0,0,0,.15); z-index:2; }
+    .manual { border-left:6px solid var(--blue); background:linear-gradient(90deg,#eef4ff,#fff); }
+    .warning { border-left:6px solid #f59e0b; background:#fffaf0; }
+    .danger { border-left:6px solid var(--red); background:#fff5f5; }
+    .ok { border-left:6px solid var(--green); background:#f0fff8; }
+    .checklist { display:grid; gap:10px; }
+    .check { display:grid; grid-template-columns:28px 1fr auto; gap:12px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    .check .box { width:22px; height:22px; border-radius:7px; border:2px solid #cbd5e1; background:#f8fafc; }
+    .check b { display:block; letter-spacing:-.03em; }
+    .check small { color:var(--muted); display:block; margin-top:3px; }
+    .pill { background:#f8fafc; color:#64748b; border:1px solid #e2e8f0; border-radius:999px; padding:5px 8px; font-size:11px; font-weight:800; white-space:nowrap; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .tab { background:#f1f5f9; color:#334155; }
+    .tab.active { background:var(--blue); color:#fff; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    .quote { font-size:18px; line-height:1.7; letter-spacing:-.04em; background:#fff; border:1px solid var(--line); border-radius:22px; padding:22px; }
+    .quote strong { color:var(--blue); }
+    .footer { margin-top:34px; color:#64748b; font-size:13px; text-align:center; }
+    mark { background:#ffef9e; padding:0 2px; border-radius:3px; }
+    .hide-search { display:none !important; }
+    @media (max-width: 980px) {
+      .top-inner { align-items:flex-start; flex-direction:column; } .brand { min-width:auto; } .actions { width:100%; }
+      .hero-grid, .grid-4, .grid-3, .grid-2, .flow { grid-template-columns:1fr; }
+      .hero { padding:28px 22px; } .hero h2 { font-size:28px; }
+      .nav { width:100%; }
+    }
+    @media print {
+      .topbar, .searchbox, .actions, .copy, .tabs { display:none !important; }
+      .wiki-doc-embed{ background:#fff; } .wrap { padding:0; max-width:100%; } .hero, .panel, .card, .step { box-shadow:none; break-inside:avoid; }
+      section { page-break-inside:avoid; }
+    }
+  
+</style>
+<style>
+
+:host{display:block; contain:content;}
+.wiki-doc-embed{font-family:var(--font, -apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR",sans-serif); color:#0f172a; line-height:1.6; width:100%; max-width:100%; overflow-x:hidden; background:#fff;}
+.wiki-doc-embed *{box-sizing:border-box;}
+.wiki-doc-embed img,.wiki-doc-embed video{max-width:100%;height:auto;}
+.wiki-doc-embed .page-section,.wiki-doc-embed .tab-panel{display:block!important;opacity:1!important;transform:none!important;visibility:visible!important;}
+.wiki-doc-embed .layout,.wiki-doc-embed .page,.wiki-doc-embed main{max-width:100%!important;margin-left:0!important;margin-right:0!important;}
+.wiki-doc-embed table{max-width:100%;}
+.wiki-doc-embed .table-wrap{overflow-x:auto;}
+.wiki-doc-embed pre{white-space:pre-wrap;overflow-x:auto;}
+.wiki-doc-embed code{white-space:normal;word-break:normal;overflow-wrap:break-word;}
+.wiki-doc-embed .top-nav,.wiki-doc-embed .site-header,.wiki-doc-embed .topbar,.wiki-doc-embed nav[aria-label="상단 메뉴"]{display:none!important;}
+
+</style>
+<main class="wrap">
+<section class="hero searchable" id="overview">
+<span class="eyebrow">운영 인수인계 문서</span>
+<h2>OPERA 예약 기준으로<br/>포인트를 수기로 적립하거나 차감하는 절차</h2>
+<p>이 문서는 개발자용 API 명세를 PM/기획자와 운영자가 이해하기 쉽도록 재구성한 웹 매뉴얼입니다. 핵심은 먼저 OPERA 예약 정보를 조회해 <b>resvNameId</b>를 확인하고, 이후 수기 포인트 적립/차감 API를 호출하는 구조입니다.</p>
+<div class="hero-grid">
+<div class="hero-card"><b>문서 유형</b><span>API 명세 → 운영 매뉴얼</span></div>
+<div class="hero-card"><b>대상 업무</b><span>포인트 복구/수기 조정</span></div>
+<div class="hero-card"><b>핵심 API</b><span>조회 1개 · 처리 1개</span></div>
+<div class="hero-card"><b>확인 포인트</b><span>양수 적립 · 음수 차감</span></div>
+</div>
+<div class="searchbox">
+<input id="searchInput" placeholder="문서 안에서 검색하기: 예) resvNameId, pointAmount, 차감, JEJUA" type="search"/>
+</div>
+</section>
+<section class="searchable" id="summary">
+<div class="section-title">
+<div><h3>문서 전체 요약</h3><p>개발 언어를 업무 언어로 바꿔서 먼저 이해하는 영역입니다.</p></div>
+</div>
+<div class="grid-2">
+<div class="panel manual">
+<h4>한 줄 요약</h4>
+<div class="quote">고객의 OPERA 예약을 찾아서 예약 식별값인 <strong>resvNameId</strong>를 확인한 뒤, 포인트 금액을 <strong>양수면 적립</strong>, <strong>음수면 차감</strong>으로 전송하는 수기 처리 기능입니다.</div>
+</div>
+<div class="panel">
+<h4>이 문서가 필요한 상황</h4>
+<ul>
+<li>포인트가 정상 적립되지 않아 사후 복구가 필요한 경우</li>
+<li>잘못 적립된 포인트를 수기로 차감해야 하는 경우</li>
+<li>OPERA 예약번호와 OMS 주문번호를 기준으로 포인트 조정 요청을 처리해야 하는 경우</li>
+<li>개발자에게 API 호출 요청을 할 때 필요한 필수값을 정리해야 하는 경우</li>
+</ul>
+</div>
+</div>
+<div class="grid-3" style="margin-top:18px">
+<div class="card"><span class="tag">STEP 1</span><h4>예약 정보 조회</h4><p><code>hotelCode</code>와 <code>pmsRsvNo</code>로 OPERA 예약 정보를 조회합니다.</p></div>
+<div class="card"><span class="tag green">STEP 2</span><h4>resvNameId 확보</h4><p>조회 결과에서 수기 포인트 처리에 필요한 예약 식별값을 확인합니다.</p></div>
+<div class="card"><span class="tag purple">STEP 3</span><h4>포인트 적립/차감</h4><p><code>pointAmount</code>를 양수 또는 음수로 넣어 포인트를 조정합니다.</p></div>
+</div>
+</section>
+<section class="searchable" id="manual">
+<div class="section-title">
+<div><h3>운영자 매뉴얼 버전</h3><p>개발자가 아닌 담당자가 실제 요청·확인할 때 보는 쉬운 버전입니다.</p></div>
+</div>
+<div class="panel manual">
+<div class="tabs">
+<button class="tab active" data-tab="op1">포인트 적립</button>
+<button class="tab" data-tab="op2">포인트 차감</button>
+<button class="tab" data-tab="op3">개발자에게 전달할 값</button>
+</div>
+<div class="tab-panel active" id="op1">
+<h4>포인트를 다시 넣어줘야 할 때</h4>
+<ol>
+<li>고객/예약 건을 확인합니다.</li>
+<li>호텔 코드와 PMS 예약번호를 준비합니다.</li>
+<li>예약 정보 조회 API로 <code>resvNameId</code>를 확인합니다.</li>
+<li>적립할 포인트 금액을 <code>pointAmount</code>에 양수로 입력합니다. 예: <code>10413</code></li>
+<li>처리 후 고객 포인트가 정상 증가했는지 확인합니다.</li>
+</ol>
+</div>
+<div class="tab-panel" id="op2">
+<h4>잘못 들어간 포인트를 빼야 할 때</h4>
+<ol>
+<li>차감 대상 예약과 포인트 금액을 확인합니다.</li>
+<li>차감 사유와 승인 여부를 기록합니다.</li>
+<li>예약 정보 조회 API로 <code>resvNameId</code>를 확인합니다.</li>
+<li>차감할 포인트 금액을 <code>pointAmount</code>에 음수로 입력합니다. 예: <code>-10413</code></li>
+<li>처리 후 고객 포인트가 정상 감소했는지 확인합니다.</li>
+</ol>
+</div>
+<div class="tab-panel" id="op3">
+<h4>개발자/운영 개발자에게 전달할 요청 정보</h4>
+<table>
+<thead><tr><th>구분</th><th>전달값</th><th>설명</th></tr></thead>
+<tbody>
+<tr><td>호텔</td><td><code>hotelCode</code>, <code>hostIp</code></td><td>어느 호텔의 예약인지 확인하는 값입니다.</td></tr>
+<tr><td>예약</td><td><code>confNo</code>, <code>orderNo</code>, <code>pmsRsvNo</code></td><td>OPERA/OMS/PMS 예약·주문 번호입니다.</td></tr>
+<tr><td>식별값</td><td><code>resvNameId</code></td><td>예약 정보 조회 후 확보해야 하는 핵심값입니다.</td></tr>
+<tr><td>포인트</td><td><code>pointAmount</code></td><td>적립은 양수, 차감은 음수입니다.</td></tr>
+<tr><td>기준일</td><td><code>postDate</code></td><td>포인트 처리 기준 일자입니다.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="searchable" id="flow">
+<div class="section-title">
+<div><h3>업무 흐름</h3><p>요청부터 완료 확인까지의 흐름입니다.</p></div>
+</div>
+<div class="flow">
+<div class="step"><div class="num">1</div><h4>요청 접수</h4><p>고객/운영팀으로부터 포인트 적립 또는 차감 요청을 받습니다.</p></div>
+<div class="step"><div class="num">2</div><h4>예약 정보 확인</h4><p>호텔 코드, 예약번호, 주문번호, 처리 금액, 처리 사유를 확인합니다.</p></div>
+<div class="step"><div class="num">3</div><h4>OPERA 조회</h4><p><code>reservation-info</code> API로 <code>resvNameId</code>를 확인합니다.</p></div>
+<div class="step"><div class="num">4</div><h4>포인트 처리</h4><p><code>point/posting</code> API로 적립 또는 차감을 요청합니다.</p></div>
+<div class="step"><div class="num">5</div><h4>검수/완료</h4><p>고객 포인트 내역, 처리 결과, 요청 티켓/메일을 확인하고 완료 처리합니다.</p></div>
+</div>
+</section>
+<section class="searchable" id="checklist">
+<div class="section-title">
+<div><h3>PM/기획자 체크리스트</h3><p>개발자가 아닌 PM/기획자가 반드시 확인해야 하는 항목만 따로 모았습니다.</p></div>
+</div>
+<div class="panel">
+<div class="checklist">
+<div class="check"><span class="box"></span><div><b>요청 유형이 명확한가?</b><small>포인트 적립인지, 차감인지 먼저 구분합니다. 차감이면 금액 앞에 마이너스가 들어가야 합니다.</small></div><span class="pill">필수</span></div>
+<div class="check"><span class="box"></span><div><b>대상 고객/예약 정보가 충분한가?</b><small>호텔 코드, OPERA 예약번호, OMS 주문번호, PMS 예약번호가 누락되지 않았는지 확인합니다.</small></div><span class="pill">필수</span></div>
+<div class="check"><span class="box"></span><div><b>포인트 금액과 부호가 맞는가?</b><small><code>pointAmount</code>가 양수면 적립, 음수면 차감입니다. 부호 오류가 가장 큰 사고 포인트입니다.</small></div><span class="pill">중요</span></div>
+<div class="check"><span class="box"></span><div><b>처리 기준일이 맞는가?</b><small><code>postDate</code>는 포인트 처리 기준 일자입니다. 고객 안내 일자와 맞는지 확인합니다.</small></div><span class="pill">중요</span></div>
+<div class="check"><span class="box"></span><div><b>resvNameId를 조회했는가?</b><small>포인트 처리 전에 예약 정보 조회 API로 <code>resvNameId</code>를 확보해야 합니다.</small></div><span class="pill">필수</span></div>
+<div class="check"><span class="box"></span><div><b>처리 후 검수 화면/내역을 확인했는가?</b><small>API 호출 성공만으로 끝내지 말고 실제 포인트 내역이 반영됐는지 확인합니다.</small></div><span class="pill">검수</span></div>
+<div class="check"><span class="box"></span><div><b>요청 근거를 남겼는가?</b><small>고객 문의, 운영 요청, 승인 메일, 처리 사유를 남겨야 추후 이슈 대응이 쉽습니다.</small></div><span class="pill">운영</span></div>
+</div>
+</div>
+</section>
+<section class="searchable" id="api">
+<div class="section-title">
+<div><h3>API 상세</h3><p>개발 문서 원문을 보존하되, PM이 이해하기 쉽게 설명을 덧붙였습니다.</p></div>
+</div>
+<div class="grid-2">
+<div class="panel">
+<h4><span class="tag green">GET</span> OPERA 예약 정보 조회</h4>
+<table>
+<tbody>
+<tr><th>Base URL</th><td><code>/api/ows/manual</code></td></tr>
+<tr><th>URL</th><td><code>/api/ows/manual/reservation-info</code></td></tr>
+<tr><th>목적</th><td>OPERA 예약 정보 단건 조회. 포인트 처리에 필요한 <code>resvNameId</code>를 확인합니다.</td></tr>
+<tr><th>필수값</th><td><code>hotelCode</code>, <code>pmsRsvNo</code></td></tr>
+</tbody>
+</table>
+<div class="codebox" style="margin-top:14px">
+<button class="copy" data-copy="getExample">복사</button>
+<pre><code id="getExample">GET /api/ows/manual/reservation-info?hotelCode=JEJUA&amp;pmsRsvNo=62766</code></pre>
+</div>
+</div>
+<div class="panel">
+<h4><span class="tag purple">POST</span> 수기 포인트 적립/차감</h4>
+<table>
+<tbody>
+<tr><th>URL</th><td><code>/api/ows/manual/point/posting</code></td></tr>
+<tr><th>목적</th><td>수기 포인트 적립 또는 차감을 처리합니다.</td></tr>
+<tr><th>핵심 규칙</th><td><code>pointAmount</code> 양수는 적립, 음수는 차감입니다.</td></tr>
+<tr><th>형식</th><td><code>application/json</code></td></tr>
+</tbody>
+</table>
+<div class="codebox" style="margin-top:14px">
+<button class="copy" data-copy="jsonExample">복사</button>
+<pre><code id="jsonExample">json
+{
+  "hotelCode":   "JEJUA",
+  "hostIp":      "10.152.10.85",
+  "postDate":    "2024-04-10",
+  "pointAmount": 10413,
+  "confNo":      "62766",
+  "orderNo":     "2402245931",
+  "resvNameId":  43608
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="panel" style="margin-top:18px">
+<h4>Request Body 필드 설명</h4>
+<table>
+<thead><tr><th>필드</th><th>PM 관점 설명</th><th>주의</th></tr></thead>
+<tbody>
+<tr><td><code>hotelCode</code></td><td>호텔 코드입니다. 예: <code>JEJUA</code></td><td>호텔을 잘못 넣으면 다른 호텔 예약으로 조회될 수 있습니다.</td></tr>
+<tr><td><code>hostIp</code></td><td>호텔 시스템 연결 IP입니다.</td><td>운영 환경 기준값 사용 필요.</td></tr>
+<tr><td><code>postDate</code></td><td>포인트 처리 기준 일자입니다.</td><td><code>yyyy-MM-dd</code> 형식.</td></tr>
+<tr><td><code>pointAmount</code></td><td>조정할 포인트 금액입니다.</td><td>양수=적립, 음수=차감.</td></tr>
+<tr><td><code>confNo</code></td><td>OPERA 예약번호입니다.</td><td>예약 원장과 일치 확인.</td></tr>
+<tr><td><code>orderNo</code></td><td>OMS 주문번호 또는 PMS 예약번호 기준값입니다.</td><td>문서상 <code>parnas_rsv_pms.pms_rsv_no</code> 값과 연결됩니다.</td></tr>
+<tr><td><code>resvNameId</code></td><td>OPERA 예약의 내부 식별값입니다.</td><td>먼저 예약 조회 API로 확인해야 합니다.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="searchable" id="caution">
+<div class="section-title">
+<div><h3>주의사항</h3><p>운영 사고를 막기 위해 꼭 확인해야 할 부분입니다.</p></div>
+</div>
+<div class="grid-3">
+<div class="panel danger"><h4>1. 부호 실수 주의</h4><p><code>pointAmount</code>를 잘못 넣으면 적립해야 할 건이 차감되거나, 차감해야 할 건이 적립될 수 있습니다.</p></div>
+<div class="panel warning"><h4>2. 예약번호 혼동 주의</h4><p><code>confNo</code>, <code>orderNo</code>, <code>pmsRsvNo</code>는 서로 다른 시스템 번호일 수 있으므로 요청서에 명확히 구분해야 합니다.</p></div>
+<div class="panel ok"><h4>3. 처리 후 검수 필수</h4><p>API 호출 성공 여부와 별개로 고객 포인트 내역에서 실제 반영 결과를 확인해야 합니다.</p></div>
+</div>
+</section>
+<section class="searchable" id="terms">
+<div class="section-title">
+<div><h3>용어 설명</h3><p>개발 문서에 나온 용어를 PM/운영자 관점으로 풀었습니다.</p></div>
+</div>
+<div class="panel">
+<table>
+<thead><tr><th>용어</th><th>쉽게 말하면</th><th>이 문서에서의 의미</th></tr></thead>
+<tbody>
+<tr><td>OPERA</td><td>호텔 예약/투숙 정보를 관리하는 시스템</td><td>예약 정보를 조회하는 기준 시스템입니다.</td></tr>
+<tr><td>OWS</td><td>OPERA와 외부 시스템을 연결하는 연동 영역</td><td>API 경로에 <code>/ows/</code>가 포함되어 있습니다.</td></tr>
+<tr><td>API</td><td>시스템끼리 요청과 응답을 주고받는 통로</td><td>예약 정보 조회와 포인트 조정을 실행하는 기능입니다.</td></tr>
+<tr><td>GET</td><td>정보를 조회하는 요청</td><td>예약 정보를 확인할 때 사용합니다.</td></tr>
+<tr><td>POST</td><td>데이터를 등록/처리하는 요청</td><td>포인트 적립 또는 차감을 실행할 때 사용합니다.</td></tr>
+<tr><td>resvNameId</td><td>예약을 시스템 내부에서 구분하는 식별값</td><td>포인트 조정 API에 반드시 필요한 값입니다.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="searchable" id="source">
+<div class="section-title">
+<div><h3>원문 보기</h3><p>업로드된 Markdown 원문입니다. 필요 시 개발자와 대조할 수 있습니다.</p></div>
+</div>
+<div class="panel">
+<div class="codebox">
+<button class="copy" data-copy="rawSource">복사</button>
+<pre><code id="rawSource"># OperaManualController API 명세
+
+**Base URL** : `/api/ows/manual`
+
+---
+
+## 1. OPERA 예약 정보 조회
+
+| 항목 | 값 |
+|------|-----|
+| **Method** | `GET` |
+| **URL** | `/api/ows/manual/reservation-info` |
+| **설명** | OPERA 예약 정보 단건 조회 (resvNameId 포함) |
+
+### Query Parameters
+
+| 파라미터 | 타입 | 설명 |
+|----------|------|------|
+| `hotelCode` | String | 호텔 코드 (예: `JEJUA`) |
+| `pmsRsvNo` | String | `parnas_rsv_pms.pms_rsv_no` 값 |
+
+### 요청 예시
+
+```
+GET /api/ows/manual/reservation-info?hotelCode=JEJUA&amp;pmsRsvNo=62766
+```
+
+---
+
+## 2. 수기 포인트 적립 / 차감
+
+| 항목 | 값 |
+|------|-----|
+| **Method** | `POST` |
+| **URL** | `/api/ows/manual/point/posting` |
+| **설명** | 수기 포인트 적립 또는 차감 / `pointAmount` 양수: 적립, 음수: 차감 |
+
+### Request Body (`application/json`)
+
+| 필드 | 타입 | 설명 |
+|------|------|------|
+| `hotelCode` | String | `parnas_hotel.hotel_code` |
+| `hostIp` | String | `parnas_hotel.host_ip` |
+| `postDate` | String | Posting 기준 일자 (차감인 경우 차감을 실행하는 날짜) (`yyyy-MM-dd`) |
+| `pointAmount` | Integer | 포인트 금액 (차감 시 음수) |
+| `confNo` | String | OPERA 예약번호 (Conf. No) / `parnas_rsv.oms_rsv_no` |
+| `orderNo` | String | 주문번호 (OMS) / `parnas_rsv_pms.pms_rsv_no` |
+| `resvNameId` | Long | OPERA RESV_NAME_ID → `GET /api/ows/manual/reservation-info` 응답의 `resvNameId` 값 |
+
+### 요청 예시
+
+```json
+{
+  "hotelCode":   "JEJUA",
+  "hostIp":      "10.152.10.85",
+  "postDate":    "2024-04-10",
+  "pointAmount": 10413,
+  "confNo":      "62766",
+  "orderNo":     "2402245931",
+  "resvNameId":  43608
+}
+```
+</code></pre>
+</div>
+</div>
+</section>
+<p class="footer">© Parnas Operations Manual · Single HTML Website Format · PM-friendly template</p>
+</main>
+</div>

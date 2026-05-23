@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "wikiDocs": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "wikiMeta": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
